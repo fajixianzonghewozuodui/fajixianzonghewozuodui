@@ -15,12 +15,12 @@ import base64
 """
   APPID AK SK
 """
-# 在百度云创的实例应用 获取的三个参数填写到下面
 
+#获取文件内容
 def get_file_content(file_path):
     with open(file_path, 'rb') as f:
         return f.read()
-
+#获取文件图片流
 def get_img_stream(img_local_path):
   """
   工具函数:
@@ -51,6 +51,7 @@ def definCar():
     return render_template("vehicleDetect.html")
 
 # 打开图片文件并读取二进制图片信息
+#实现车辆检测
 @app.route("/defineCar")
 def define():
     if len(img_path)>0:
@@ -83,7 +84,7 @@ def define():
     else:
         return render_template("vehicleDetect.html",message = "无图片，请选择一张图片进行识别")
 
-
+#打开图片
 @app.route("/selectPicture")
 def openPicture():
     application_window = tk.Tk()
