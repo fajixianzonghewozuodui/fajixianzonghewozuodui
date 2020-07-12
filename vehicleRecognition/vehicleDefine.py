@@ -10,21 +10,23 @@ import io
 import base64
 
 """
-  APPID AK SK
+author:qiuzhuang
+createtime:2020/7/8
+updatetime:2020/7/12
 """
-# 在百度云创的实例应用 获取的三个参数填写到下面
+# 将在百度云创建的实例应用中的相应的三个参数填写好
 APP_ID = '21222085'
 API_KEY = 'SMgDfvavkQVr99MlXwgT9hsw'
 SECRET_KEY = 'H0AGKvGy04ZCS0dLHGhMA55Yu5f0R2u5'
 client = AipImageClassify(APP_ID, API_KEY, SECRET_KEY)
+#函数可以根据图片路径获得图片
 def get_file_content(file_path):
     with open(file_path, 'rb') as f:
         return f.read()
 
 def get_img_stream(img_local_path):
   """
-  工具函数:
-  获取本地图片流
+  函数可获取本地图片流
   :param img_local_path:文件单张图片的本地绝对路径
   :return: 图片流
   """
@@ -34,6 +36,7 @@ def get_img_stream(img_local_path):
     img_stream = base64.b64encode(img_stream).decode()
   return img_stream
 
+#定义两个全局变量用于获取图片路径以及url
 img_path = None
 img_url = None
 
@@ -47,10 +50,10 @@ def hello_world():
 """
 
 @app.route("/")
-def definCar():
+def defin_car():
     return render_template("vehicleDefine.html")
 
-# 打开图片文件并读取二进制图片信息
+# 对用户选择的图片进行车型识别并将识别结果返回给前端
 @app.route("/defineCar")
 def define():
     if len(img_path)>0:
@@ -66,9 +69,9 @@ def define():
     else:
         return render_template("vehicleDefine.html",message = "无图片，请选择一张图片进行识别")
 
-
+#提示用户在本地选择一张汽车图片
 @app.route("/selectPicture")
-def openPicture():
+def open_picture():
     application_window = tk.Tk()
     application_window.withdraw()  # 将创建的tk窗口隐藏
 
