@@ -8,6 +8,7 @@ import cv2
 import matplotlib.pyplot as plt
 import io
 import base64
+import defineCarColor
 
 """
 author:qiuzhuang
@@ -58,6 +59,8 @@ def defin_car():
 def define():
     if len(img_path)>0:
         image = get_file_content(img_path)
+        #调用相应方法获得汽车的颜色
+        car_color = defineCarColor.crop_img(img_path)
         """
           #调用车辆识别的相应API
         """
@@ -65,7 +68,7 @@ def define():
 
         # 调用client对象的carDectect方法
         car_message = client.carDetect(image, options={"top_num": 1})["result"][0]["name"]
-        return  render_template("vehicleDefine.html",message = car_message,picture_url = img_url)
+        return  render_template("vehicleDefine.html",message = car_message,picture_url = img_url,color = car_color)
     else:
         return render_template("vehicleDefine.html",message = "无图片，请选择一张图片进行识别")
 
