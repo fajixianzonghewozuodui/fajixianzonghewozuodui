@@ -10,29 +10,40 @@
     <title>车型识别</title>
 </head>
 <body>
-<div class="container">
-	<div class="row clearfix">
-		<div class="col-md-6 column">
-            <!-- 这里的png是指什么，只能展示png格式的图片，还是说传过来的图片都会转换成png格式，再展示？找gif，tif格式的试试，有问题的话请教大佬看这块怎么改才能按图片原本的格式来展示，写*..*？ -->
-			<img alt="Car" src="data:;base64,{{ picture_url }}">
-            <form action="selectPicture" method="get">
-                <input type="submit" value="选择图片">
-            </form>
-             <form action="defineCar" method="get">
-                <input type="submit" value="识别图片">
-            </form>
-		</div>
-		<div class="col-md-6 column">
-			<h2>
-				车辆识别结果
-			</h2>
-			<p>
-				汽车型号：{{ message }}
-			</p>
-
+<section class="common-sec main-welcome" id="about-us">
+    <h3 class="text-center">
+		车型识别
+	</h3>
+	<div class="element-top">
+		<img src="E:/carDefineCode/fajixianzonghewozuodui/vehicleRecognition/img/car1.jpg" alt="" />
+	</div>
+	<div class="element-bottom">
+		<img src="E:/carDefineCode/fajixianzonghewozuodui/vehicleRecognition/img/car2.jpg" alt="" />
+	</div>
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-6 col-md-8">
+				<div class="welcome-img wow fadeIn">
+					<img alt="Car" src="data:;base64,{{ picture_url }}">
+                    <form action="selectPicture" method="get">
+				       <input type="submit" value="选择图片">
+				    </form>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12">
+				<div class="welcome-content">
+					<h2 class="h2-title">识别结果</h2>
+					<p>汽车型号：</p>
+					<p>{{ message }}</p>
+                    <p>{{ color }}</p>
+                    <form action="defineCar" method="get">
+					    <input type="submit" value="识别图片">
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 </body>
 </html>
