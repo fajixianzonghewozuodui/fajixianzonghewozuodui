@@ -121,12 +121,12 @@ def define():
             print("距左侧距离", vehicle[3])
             print("高度", vehicle[4])
             print("置信度", vehicle[5])
-            data="车辆类型:"+str(vehicle[0])+\
+            data="\n车辆类型:"+str(vehicle[0])+\
                  "\n宽度:"+str(vehicle[1])+\
                  "\n距顶部距离:"+str(vehicle[2])+\
                  "\n距左侧距离:"+str(vehicle[3])+\
                  "\n高度:"+str(vehicle[4])+\
-                 "\n置信度:"+str(vehicle[5])+'\n'+data
+                 "\n置信度:"+str(vehicle[5])+'\n'+data+'\n'+'\n'
         car_message="车辆总数："+str(vehicle_num)+\
                     "\n摩托车数量："+str(motorbike_num)+\
                     "\n三轮车数量："+str(tricycle_num)+\
@@ -134,7 +134,7 @@ def define():
                     "\n卡车数量："+str(truck_num)+\
                     "\n公交车数量："+str(bus_num)+\
                     "\n汽车车牌数量："+str(carplate_num)
-        return render_template("vehicleDetect.html",message = car_message+'\n'+data,picture_url = img_url)
+        return render_template("vehicleDetect.html",message = car_message+'\n'+'\n'+data,picture_url = img_url)
     else:
         return render_template("vehicleDetect.html",message = "无图片，请选择一张图片进行识别")
 
