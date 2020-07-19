@@ -1,7 +1,7 @@
 """
 author:qiuzhuang
-createtime:2020/7/8
-updatetime:2020/7/12
+createtime:2020/7/15
+updatetime:2020/7/18
 """
 import cv2
 import numpy as np
@@ -12,10 +12,9 @@ from colorsys import rgb_to_hsv
 
 #设定颜色字典
 colors = dict((
-("红色",(255, 0, 0)),
+("红色",(125, 0, 0)),
 ("橙色",(255, 165, 0)),
 ("黄色",(255, 255, 0)),
-("绿色",(0, 128, 0) ),
 ("蓝色",(0, 0, 255) ),
 ("紫色",(127, 0, 255)),
 ("黑色",(0, 0, 0)),
@@ -98,15 +97,14 @@ def crop_img(path):
 
 
     # 对图片进一步裁剪，得到车的中间那块部分
-    a = int(sz2 / 6)  # x start
+    a = int((sz2 * 3) / 5)  # x start
     b = int((sz2 / 20) * 17)  # x end
-    c = int((sz1 / 5) * 2)  # y start
-    d = int(sz1 / 2)  # y end
+    c = int((sz1 / 15) * 8)  # y start
+    d = int((sz1 * 3) / 5)  # y end
     croImg = cropImg[c:d, a:b]
     cv2.imwrite("croImg.jpg", croImg)
-    cv2.waitKey()
+
     image = Image.open('croImg.jpg')
-    image = image.convert('RGB')
     color_to_match = get_dominant_color(image)
     car_color = min_color_diff(color_to_match, colors)
     #返回汽车的颜色
@@ -137,26 +135,21 @@ def min_color_diff( color_to_match, colors):
                 min_distance = a
                 max_color = "黄色"
         elif i==3:
-            a = (color_to_match[0]-colors["绿色"][0])**2+(color_to_match[1]-colors["绿色"][1])**2+(color_to_match[2]-colors["绿色"][2])**2
-            if a<min_distance:
-                min_distance = a
-                max_color = "绿色"
-        elif i==4:
             a = (color_to_match[0]-colors["蓝色"][0])**2+(color_to_match[1]-colors["蓝色"][1])**2+(color_to_match[2]-colors["蓝色"][2])**2
             if a<min_distance:
                 min_distance = a
                 max_color = "蓝色"
-        elif i==5:
+        elif i==4:
             a = (color_to_match[0]-colors["紫色"][0])**2+(color_to_match[1]-colors["紫色"][1])**2+(color_to_match[2]-colors["紫色"][2])**2
             if a<min_distance:
                 min_distance = a
                 max_color = "紫色"
-        elif i==6:
+        elif i==5:
             a = (color_to_match[0]-colors["黑色"][0])**2+(color_to_match[1]-colors["黑色"][1])**2+(color_to_match[2]-colors["黑色"][2])**2
             if a<min_distance:
                 min_distance = a
                 max_color = "黑色"
-        elif i==7:
+        elif i==6:
             a = (color_to_match[0]-colors["白色"][0])**2+(color_to_match[1]-colors["白色"][1])**2+(color_to_match[2]-colors["白色"][2])**2
             if a<min_distance:
                 min_distance = a
@@ -176,20 +169,16 @@ def min_color_diff( color_to_match, colors):
 
 #获得输入的图片中最主要的颜色
 def get_dominant_color(image):
-    max_score = 0.0001
-    dominant_color = None
-    for count, (r, g, b) in image.getcolors(image.size[0] * image.size[1]):
-        # 转为HSV标准
-        saturation = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)[1]
-        y = min(abs(r * 2104 + g * 4130 + b * 802 + 4096 + 131072) >> 13, 235)
-        y = (y - 16.0) / (235 - 16)
+    # 要提取的主要颜色数量
+    num_colors = 1
 
-        score = (saturation + 0.1) * count
-        if score > max_score:
-            max_score = score
-            dominant_color = (r, g, b)
-    return dominant_color
+    small_image = image.resize((80, 80))
+    result = small_image.convert('P', palette=Image.ADAPTIVE, colors=num_colors)  # image with 5 dominating colors
 
+    result = result.convert('RGB')
+    # result.show() # 显示图像
+    main_colors = result.getcolors(80 * 80)
+    return main_colors[0][1]
 
 if __name__ == '__main__':
     crop_img("E:/testimage/test3.jpg")
