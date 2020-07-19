@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驾驶行为分析</title>
+</head>
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-6 column">
+            <!-- 这里的png是指什么，只能展示png格式的图片，还是说传过来的图片都会转换成png格式，再展示？找gif，tif格式的试试，有问题的话请教大佬看这块怎么改才能按图片原本的格式来展示，写*..*？ -->
+			<img alt="Car" src="data:;base64,{{ picture_url }}">
+            <form action="selectPicture" method="get">
+                <input type="submit" value="选择图片">
+            </form>
+             <form action="defineCar" method="get">
+                <input type="submit" value="识别图片">
+            </form>
+		</div>
+		<div class="col-md-6 column">
+			<h2>
+				驾驶行为分析结果
+			</h2>
+			<p><div styLe= 'white-space: pre-Line;'>
+				{{ message }}</div>
+			</p>
+
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
