@@ -86,6 +86,8 @@ def open_picture():
                                         initialdir=os.getcwd(),
                                         title="请选择一张汽车图片",
                                         filetypes=my_filetypes)
+    #用户选择文件后销毁tk窗口
+    application_window.destroy()
     print(filename)
     if len(filename)>0:
         #获得用户选择的图片存储在服务器上的地址
