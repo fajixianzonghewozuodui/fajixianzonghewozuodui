@@ -81,7 +81,6 @@ def define():
         if response:
             json_temp = response.json()
             print(json_temp)
-        # 摩托车数量
         motorbike_num = jsonpath.jsonpath(json_temp, '$..motorbike')[0]
         print("摩托车数量", motorbike_num)
         # 三轮车数量

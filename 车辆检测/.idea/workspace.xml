@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33c644bb-df1e-4000-a922-70c18a6fbda3" name="Default Changelist" comment="" />
+    <list default="true" id="33c644bb-df1e-4000-a922-70c18a6fbda3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../车损识别/123.py" beforeDir="false" afterPath="$PROJECT_DIR$/../车损识别/123.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/123.py" beforeDir="false" afterPath="$PROJECT_DIR$/123.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +90,11 @@
       <workItem from="1595127589445" duration="282000" />
       <workItem from="1595129912918" duration="1347000" />
       <workItem from="1595134202208" duration="1102000" />
+      <workItem from="1595145443852" duration="47000" />
+      <workItem from="1595145504884" duration="77000" />
+      <workItem from="1595156035009" duration="1079000" />
+      <workItem from="1595157215800" duration="45000" />
+      <workItem from="1595157268524" duration="5000" />
     </task>
     <servers />
   </component>
@@ -93,30 +102,30 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595134385456">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595145485467">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1595134385456" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1595145485467" />
     <state x="351" y="0" key="#车辆检测" timestamp="1595084163279">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="351" y="0" key="#车辆检测/0.0.1280.680@0.0.1280.680" timestamp="1595084163279" />
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1595135309274">
+    <state width="1237" height="52" key="GridCell.Tab.0.bottom" timestamp="1595157201250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595135309274" />
-    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1595135309274">
+    <state width="1237" height="52" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595157201250" />
+    <state width="1237" height="52" key="GridCell.Tab.0.center" timestamp="1595157201250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595135309274" />
-    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1595135309273">
+    <state width="1237" height="52" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595157201250" />
+    <state width="1237" height="52" key="GridCell.Tab.0.left" timestamp="1595157201250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595135309273" />
-    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1595135309274">
+    <state width="1237" height="52" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595157201250" />
+    <state width="1237" height="52" key="GridCell.Tab.0.right" timestamp="1595157201250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595135309274" />
+    <state width="1237" height="52" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595157201250" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1595130511659">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -130,5 +139,6 @@
     <SUITE FILE_PATH="coverage/vehicleDetect$.coverage" NAME="车辆检测 Coverage Results" MODIFIED="1595130519406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/vehicleDetect$vehicleDetect.coverage" NAME="vehicleDetect Coverage Results" MODIFIED="1595134390671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/$.coverage" NAME="车辆检测 Coverage Results" MODIFIED="1595084163833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/$vehicleDetect.coverage" NAME="vehicleDetect Coverage Results" MODIFIED="1595156096712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
