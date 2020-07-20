@@ -90,14 +90,26 @@ def define():
             j = 0
             data = ""
             attributes = ""
+            f=""
+            location_info = [['a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
+            attribute_info = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
+            s = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
             while (j < person_num):
-                location_info = [['a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
-                attribute_info = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
-                location_info[j][0] = jsonpath.jsonpath(json_temp, '$..score')[j]
+
+                location_info[j][0] = jsonpath.jsonpath(json_temp, '$..location.score')[j]
                 location_info[j][1] = jsonpath.jsonpath(json_temp, '$..top')[j]
                 location_info[j][2] = jsonpath.jsonpath(json_temp, '$..left')[j]
                 location_info[j][3] = jsonpath.jsonpath(json_temp, '$..width')[j]
                 location_info[j][4] = jsonpath.jsonpath(json_temp, '$..height')[j]
+                s= jsonpath.jsonpath(json_temp, '$..attributes.both_hands_leaving_wheel.score')
+                d= jsonpath.jsonpath(json_temp, '$..attributes.eyes_closed.score')
+                f= jsonpath.jsonpath(json_temp, '$..attributes.no_face_mask.score')
+                g= jsonpath.jsonpath(json_temp, '$..attributes.not_buckling_up.score')
+                h= jsonpath.jsonpath(json_temp, '$..attributes.smoke.score')
+                o= jsonpath.jsonpath(json_temp, '$..attributes.cellphone.score')
+                k= jsonpath.jsonpath(json_temp, '$..attributes.not_facing_front.score')
+                l= jsonpath.jsonpath(json_temp, '$..attributes.yawning.score')
+                p= jsonpath.jsonpath(json_temp, '$..attributes.head_lowered.score')
                 attribute_info[j][0] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 0]
                 attribute_info[j][1] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 1]
                 attribute_info[j][2] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 2]
@@ -109,22 +121,23 @@ def define():
                 attribute_info[j][8] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 8]
                 j = j + 1
                 for location in location_info:
-                    data = "\n分数:" + str(location[0]) + \
+                   data = "\n分数:" + str(location[0]) + \
                        "\n距顶部距离:" + str(location[1]) + \
                        "\n距左侧距离:" + str(location[2]) + \
                        "\n宽度:" + str(location[3]) + \
-                       "\n高度:" + str(location[4]) + '\n' + data + '\n' + '\n'
+                       "\n高度:" + str(location[4]) + '\n'
                 for attribute in attribute_info:
-                    attributes = "\nboth_hands_leaving_wheel:" + str(attribute[0]) + \
-                             "\neyes_closed:" + str(attribute[1]) + \
-                             "\nno_face_mask:" + str(attribute[2]) + \
-                             "\nnot_buckling_up:" + str(attribute[3]) + \
-                             "\nsmoke:" + str(attribute[4]) + \
-                             "\ncellphone:" + str(attribute[5]) + \
-                             "\nnot_facing_front:" + str(attribute[6]) + \
-                             "\nyawning:" + str(attribute[7]) + \
-                             "\nhead_lowered:" + str(attribute[8]) + '\n' + data + '\n' + '\n'
-            return render_template("driverBehavior.html", message=data+'\n'+attributes, picture_url=img_url)
+                   attributes = "\n双手离开方向盘:" +"\t判断值"+str(attribute[0]) +"\t得分：" +str(s)+\
+                             "\n闭眼:" + "\t判断值"+str(attribute[1]) + "\t得分：" +str(d)+\
+                             "\n未正确佩戴口罩:" + "\t判断值"+str(attribute[2]) + "\t得分：" +str(f)+\
+                             "\n未系安全带:" + "\t判断值"+str(attribute[3]) + "\t得分："+str(g)+\
+                             "\n吸烟:" + "\t判断值"+str(attribute[4]) + "\t得分："+str(h)+\
+                             "\n使用手机:" +"\t判断值"+ str(attribute[5]) + "\t得分：" +str(o)+\
+                             "\n视角未看前方:" + "\t判断值"+str(attribute[6]) + "\t得分：" +str(k)+\
+                             "\n打哈欠:" +"\t判断值"+ str(attribute[7]) + "\t得分：" +str(l)+\
+                             "\n低头:" + "\t判断值"+str(attribute[8]) +"\t得分："+str(p)
+            f=data+'\n'+attributes
+        return render_template("driverBehavior.html", message=f, picture_url=img_url)
     else:
         return render_template("driverBehavior.html", message="无图片，请选择一张图片进行识别")
 
