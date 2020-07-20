@@ -82,9 +82,52 @@ def define():
             json_temp = response.json()
             print(json_temp)
 
-        return render_template("driverBehavior.html",message = json_temp,picture_url = img_url)
+            #
+            person_num = jsonpath.jsonpath(json_temp, '$..person_num')[0]
+            # 车载人数
+            driver_num = jsonpath.jsonpath(json_temp, '$..driver_num')[0]
+
+            j = 0
+            data = ""
+            attributes = ""
+            while (j < person_num):
+                location_info = [['a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
+                attribute_info = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
+                location_info[j][0] = jsonpath.jsonpath(json_temp, '$..score')[j]
+                location_info[j][1] = jsonpath.jsonpath(json_temp, '$..top')[j]
+                location_info[j][2] = jsonpath.jsonpath(json_temp, '$..left')[j]
+                location_info[j][3] = jsonpath.jsonpath(json_temp, '$..width')[j]
+                location_info[j][4] = jsonpath.jsonpath(json_temp, '$..height')[j]
+                attribute_info[j][0] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 0]
+                attribute_info[j][1] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 1]
+                attribute_info[j][2] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 2]
+                attribute_info[j][3] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 3]
+                attribute_info[j][4] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 4]
+                attribute_info[j][5] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 5]
+                attribute_info[j][6] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 6]
+                attribute_info[j][7] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 7]
+                attribute_info[j][8] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 8]
+                j = j + 1
+                for location in location_info:
+                    data = "\n分数:" + str(location[0]) + \
+                       "\n距顶部距离:" + str(location[1]) + \
+                       "\n距左侧距离:" + str(location[2]) + \
+                       "\n宽度:" + str(location[3]) + \
+                       "\n高度:" + str(location[4]) + '\n' + data + '\n' + '\n'
+                for attribute in attribute_info:
+                    attributes = "\nboth_hands_leaving_wheel:" + str(attribute[0]) + \
+                             "\neyes_closed:" + str(attribute[1]) + \
+                             "\nno_face_mask:" + str(attribute[2]) + \
+                             "\nnot_buckling_up:" + str(attribute[3]) + \
+                             "\nsmoke:" + str(attribute[4]) + \
+                             "\ncellphone:" + str(attribute[5]) + \
+                             "\nnot_facing_front:" + str(attribute[6]) + \
+                             "\nyawning:" + str(attribute[7]) + \
+                             "\nhead_lowered:" + str(attribute[8]) + '\n' + data + '\n' + '\n'
+            return render_template("driverBehavior.html", message=data+'\n'+attributes, picture_url=img_url)
     else:
-        return render_template("driverBehavior.html",message = "无图片，请选择一张图片进行识别")
+        return render_template("driverBehavior.html", message="无图片，请选择一张图片进行识别")
+
 
 #打开图片
 @app.route("/selectPicture")
