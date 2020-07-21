@@ -3,11 +3,18 @@ import numpy as np
 from numpy.linalg import norm
 import os
 import json
+import tkinter as tk
+from tkinter import filedialog
+import base64
 
 SZ = 20  # 训练图片长宽
 MAX_WIDTH = 1000  # 原始图片最大宽度
 Min_Area = 2000  # 车牌区域允许最大面积
 PROVINCE_START = 1000
+
+#定义两个全局变量用于获取图片路径以及url
+img_path = None
+img_url = None
 
 
 # 定义必要的函数
@@ -298,11 +305,11 @@ class CardPredictor:
         return xl, xr, yh, yl
 
     # 测试
-    def predict(self, car_pic):
-        if type(car_pic) == type(""):
-            img = imreadex(car_pic)
+    def predict(self):
+        if type(img_path) == type(""):
+            img = imreadex(img_path)
         else:
-            img = car_pic
+            img = img_path
         pic_hight, pic_width = img.shape[:2]
 
         if pic_width > MAX_WIDTH:
@@ -519,8 +526,9 @@ class CardPredictor:
                 x_threshold = (x_min + x_average) / 2
                 wave_peaks = find_waves(x_threshold, x_histogram)
                 if len(wave_peaks) == 0:
-                    print("字符分割错误")
-                    continue
+                    str = "无图片或者图片中无车牌，请选择正确的图片"
+                    nu = "name"
+                    return str,nu
                 # 认为水平方向，最大的波峰为车牌区域
                 wave = max(wave_peaks, key=lambda x: x[1] - x[0])
                 gray_img = gray_img[wave[0]:wave[1]]
@@ -540,8 +548,9 @@ class CardPredictor:
                 #	cv2.line(card_img, pt1=(wave[0], 5), pt2=(wave[1], 5), color=(0, 0, 255), thickness=2)
                 # 车牌字符数应大于6
                 if len(wave_peaks) <= 6:
-                    print("字符数少于6，字符数为：", len(wave_peaks))
-                    continue
+                    str = "图片中车牌字符数小于6，请选择正确的图片"
+                    nu = "name"
+                    return str,nu
 
                 wave = max(wave_peaks, key=lambda x: x[1] - x[0])
                 max_wave_dis = wave[1] - wave[0]
@@ -600,7 +609,46 @@ class CardPredictor:
                 card_color = color
                 break
 
-        return predict_result, roi, card_color  # 识别到的字符、定位的车牌图像、车牌颜色
+        nu = "name"
+        return predict_result,img_url,nu  # 识别到的字符、定位的车牌图像、车牌颜色
+
+
+def get_img_stream(img_local_path):
+    """
+    函数可获取本地图片流
+    :param img_local_path:文件单张图片的本地绝对路径
+    :return: 图片流
+    """
+    img_stream = ''
+    with open(img_local_path, 'rb') as img_f:
+        img_stream = img_f.read()
+        img_stream = base64.b64encode(img_stream).decode()
+    return img_stream
+
+    # 提示用户在本地选择一张汽车图片
+def open_picture():
+    application_window = tk.Tk()
+    application_window.withdraw()  # 将创建的tk窗口隐藏
+
+    # 设置文件对话框会显示的文件类型txt files (*.txt)|*.txt|All files (*.*)|*.*
+    my_filetypes = [('all files', '.*'), ('text files', '.txt')]
+
+    # 打开一个文件选择对话框，选择汽车图片,返回选择的文件路径
+    filename = filedialog.askopenfilename(parent=application_window,
+                                              initialdir=os.getcwd(),
+                                              title="请选择一张汽车图片",
+                                              filetypes=my_filetypes)
+    # 用户选择文件后销毁tk窗口
+    application_window.destroy()
+    if len(filename) > 0:
+    # 获得用户选择的图片存储在服务器上的地址
+        global img_url
+        img_url = get_img_stream(filename)
+        global img_path
+        img_path = filename
+        return filename, img_url
+    else:
+        return filename
 
 
 if __name__ == '__main__':

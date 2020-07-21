@@ -111,7 +111,7 @@ this.className="";
 
            <div class="lt" >
            	<table><tr><td height="200px"></td></tr>
-           		<tr><td width="450px"><span color="#93858E" size="3px">基于SVM算法训练模型颜色识别加矩形识别提高准确率<br>支持对中国大陆机动车车牌的识别，包括地域编号和车牌号</span></td></tr>
+           		<tr><td width="450px"><span color="#93858E" size="3px">{{ message }}</span></td></tr>
 <tr><td><br><form action="selectPictureNumber" method="get">
                 <input type="submit" value="选择图片">
                 </form></td></tr>
@@ -121,7 +121,7 @@ this.className="";
            		           	</table>
            </div>
            <div class="rt">
-           	<img src="img/13.jpg" width="650px">
+           	<img alt="" src="data:;base64,{{ picture_url }}">
            </div>
 
        </div>

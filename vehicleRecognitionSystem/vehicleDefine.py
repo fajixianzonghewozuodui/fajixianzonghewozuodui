@@ -65,6 +65,7 @@ def define():
         str = "无图片，请选择一张图片进行识别"
         return str
 
+
 #提示用户在本地选择一张汽车图片
 def open_picture():
     application_window = tk.Tk()
@@ -89,7 +90,6 @@ def open_picture():
         return filename,img_url
     else:
         return filename
-
 
 
 

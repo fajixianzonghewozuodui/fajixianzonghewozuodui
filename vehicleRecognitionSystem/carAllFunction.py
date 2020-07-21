@@ -5,6 +5,7 @@ import vehicleDamage
 import vehicleDefine
 from flask import Flask, render_template
 
+
 app = Flask(__name__)
 
 #初始展示界面
@@ -90,6 +91,31 @@ def detect_car():
         return render_template("vehicleDetect.html",message = mlist[0])
 
 #实现了车牌识别
+@app.route("/selectPictureNumber")
+def number_open_picture():
+    mlist = list(plateNumberDefine.open_picture())
+    i = len(mlist)
+    if i==2:
+        return render_template("plateNumberDefine.html",picture_url = mlist[1])
+    else:
+        return render_template("plateNumberDefine.html")
+
+@app.route("/defineCarNumber")
+def number_define():
+    c = plateNumberDefine.CardPredictor()
+    c.train_svm()
+    mlist = list(c.predict())  # 带检测图片（在test中选择图片，也可以自己添加图片)
+    i = len(mlist)
+    print(mlist)
+    if i ==3:
+        return render_template("plateNumberDefine.html",message = mlist[0],picture_url = mlist[1])
+    else:
+        return render_template("plateNumberDefine.html",message = mlist[0])
+
+
+
+
+
 
 #实现了车辆属性识别
 
