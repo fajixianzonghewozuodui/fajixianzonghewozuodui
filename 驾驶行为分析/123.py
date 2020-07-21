@@ -91,6 +91,7 @@ def define():
             data = ""
             attributes = ""
             f=""
+            m="\n驾驶人员数量:" + str(driver_num)
             location_info = [['a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
             attribute_info = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
             while (j < person_num):
@@ -121,8 +122,7 @@ def define():
 
                 j = j + 1
                 for location in location_info:
-                   data = "\n驾驶人员数量:" + str(driver_num) + \
-                          "\n分数:" + str(location[0]) + \
+                   data = "\n分数:" + str(location[0]) + \
                           "\n距顶部距离:" + str(location[1]) + \
                           "\n距左侧距离:" + str(location[2]) + \
                           "\n宽度:" + str(location[3]) + \
@@ -157,7 +157,7 @@ def define():
                                  "\n打哈欠:" +"\t"+ "\t分析结果:\t" + l1+"\t得分:\t" + str(l) + "\t判断值\t" + str(attribute[7]) + \
                                  "\n低头:" + "\t"+"\t分析结果:\t" + p1+"\t得分:\t" + str(p)+ "\t判断值\t" + str(attribute[8])
             f=data+'\n'+attributes
-        return render_template("driverBehavior.html", message=f, picture_url=img_url)
+            return render_template("driverBehavior.html", message=m+'\n'+f, picture_url=img_url)
     else:
         return render_template("driverBehavior.html", message="无图片，请选择一张图片进行识别")
 
