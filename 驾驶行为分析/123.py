@@ -93,7 +93,6 @@ def define():
             f=""
             location_info = [['a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
             attribute_info = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
-            s = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
             while (j < person_num):
 
                 location_info[j][0] = jsonpath.jsonpath(json_temp, '$..location.score')[j]
@@ -119,23 +118,44 @@ def define():
                 attribute_info[j][6] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 6]
                 attribute_info[j][7] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 7]
                 attribute_info[j][8] = jsonpath.jsonpath(json_temp, '$..threshold')[j * 9 + 8]
+
                 j = j + 1
                 for location in location_info:
-                   data = "\n分数:" + str(location[0]) + \
-                       "\n距顶部距离:" + str(location[1]) + \
-                       "\n距左侧距离:" + str(location[2]) + \
-                       "\n宽度:" + str(location[3]) + \
-                       "\n高度:" + str(location[4]) + '\n'
+                   data = "\n驾驶人员数量:" + str(driver_num) + \
+                          "\n分数:" + str(location[0]) + \
+                          "\n距顶部距离:" + str(location[1]) + \
+                          "\n距左侧距离:" + str(location[2]) + \
+                          "\n宽度:" + str(location[3]) + \
+                          "\n高度:" + str(location[4]) + '\n'
                 for attribute in attribute_info:
-                   attributes = "\n双手离开方向盘:" +"\t判断值"+str(attribute[0]) +"\t得分：" +str(s)+\
-                             "\n闭眼:" + "\t判断值"+str(attribute[1]) + "\t得分：" +str(d)+\
-                             "\n未正确佩戴口罩:" + "\t判断值"+str(attribute[2]) + "\t得分：" +str(f)+\
-                             "\n未系安全带:" + "\t判断值"+str(attribute[3]) + "\t得分："+str(g)+\
-                             "\n吸烟:" + "\t判断值"+str(attribute[4]) + "\t得分："+str(h)+\
-                             "\n使用手机:" +"\t判断值"+ str(attribute[5]) + "\t得分：" +str(o)+\
-                             "\n视角未看前方:" + "\t判断值"+str(attribute[6]) + "\t得分：" +str(k)+\
-                             "\n打哈欠:" +"\t判断值"+ str(attribute[7]) + "\t得分：" +str(l)+\
-                             "\n低头:" + "\t判断值"+str(attribute[8]) +"\t得分："+str(p)
+                    s11=s[0]
+                    d11 = d[0]
+                    f11 = f[0]
+                    g11 = g[0]
+                    h11 = h[0]
+                    o11 = o[0]
+                    k11 = k[0]
+                    l11 = l[0]
+                    p11 = p[0]
+                    s1 ="是"if s11>float(attribute[0])else "否"
+                    d1 ="是"if d11> float(attribute[1]) else "否"
+                    f1 ="是"if f11 >float( attribute[2]) else "否"
+                    g1 ="是"if g11>float(attribute[3])else "否"
+                    h1 ="是"if h11>float(attribute[4])else "否"
+                    o1 ="是"if o11>float(attribute[5])else "否"
+                    k1 ="是"if k11>float(attribute[6])else "否"
+                    l1 ="是"if l11>float(attribute[7])else "否"
+                    p1 ="是"if p11>float(attribute[8])else "否"
+
+                    attributes = "\n双手离开方向盘:" +"\t分析结果:\t" + s1+ "\t得分:\t" + str(s) + "\t判断值\t" + str(attribute[0]) + \
+                                 "\n闭眼:" + "\t"+"\t分析结果:\t" + d1+"\t得分:\t" + str(d)+"\t判断值\t" + str(attribute[1]) + \
+                                 "\n未正确佩戴口罩:" +"\t分析结果:\t" + f1+"\t得分:\t" + str(f) + "\t判断值\t" + str(attribute[2]) + \
+                                 "\n未系安全带:" + "\t分析结果:\t" + g1+"\t得分:\t" + str(g)+"\t判断值\t" + str(attribute[3])+ \
+                                 "\n吸烟:"+"\t"+"\t分析结果:\t" + h1+"\t得分:\t" + str(h) + "\t判断值\t" + str(attribute[4]) + \
+                                 "\n使用手机:" + "\t分析结果:\t" + o1+"\t得分:\t" + str(o) + "\t判断值\t" + str(attribute[5]) +  \
+                                 "\n视角未看前方:" + "\t分析结果:\t" + k1+"\t得分:\t" + str(k) + "\t判断值\t" + str(attribute[6]) +  \
+                                 "\n打哈欠:" +"\t"+ "\t分析结果:\t" + l1+"\t得分:\t" + str(l) + "\t判断值\t" + str(attribute[7]) + \
+                                 "\n低头:" + "\t"+"\t分析结果:\t" + p1+"\t得分:\t" + str(p)+ "\t判断值\t" + str(attribute[8])
             f=data+'\n'+attributes
         return render_template("driverBehavior.html", message=f, picture_url=img_url)
     else:
