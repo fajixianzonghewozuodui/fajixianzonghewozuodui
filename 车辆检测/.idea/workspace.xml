@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33c644bb-df1e-4000-a922-70c18a6fbda3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../车损识别/123.py" beforeDir="false" afterPath="$PROJECT_DIR$/../车损识别/123.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/123.py" beforeDir="false" afterPath="$PROJECT_DIR$/123.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +22,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet.xml" />
   </component>
-  <component name="RunManager" selected="Python.vehicleDetect">
+  <component name="RunManager" selected="Python.车辆检测">
     <configuration name="车辆检测" type="PythonConfigurationType" factoryName="Python">
       <module name="车辆检测" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -95,6 +94,8 @@
       <workItem from="1595156035009" duration="1079000" />
       <workItem from="1595157215800" duration="45000" />
       <workItem from="1595157268524" duration="5000" />
+      <workItem from="1595230202802" duration="12000" />
+      <workItem from="1595230227801" duration="455000" />
     </task>
     <servers />
   </component>
@@ -136,9 +137,9 @@
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1595129994839" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/vehicleDetect$.coverage" NAME="车辆检测 Coverage Results" MODIFIED="1595130519406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/vehicleDetect$vehicleDetect.coverage" NAME="vehicleDetect Coverage Results" MODIFIED="1595134390671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/$.coverage" NAME="车辆检测 Coverage Results" MODIFIED="1595084163833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/$vehicleDetect.coverage" NAME="vehicleDetect Coverage Results" MODIFIED="1595156096712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/vehicleDetect$.coverage" NAME="车辆检测 Coverage Results" MODIFIED="1595130519406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

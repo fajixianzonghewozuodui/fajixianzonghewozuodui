@@ -10,6 +10,7 @@ import io
 import base64
 import defineCarColor
 
+
 """
 author:qiuzhuang
 createtime:2020/7/8
@@ -44,18 +45,9 @@ img_url = None
 
 app = Flask(__name__)
 
-"""
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-"""
 
-@app.route("/")
-def defin_car():
-    return render_template("vehicleDefine.html")
 
 # 对用户选择的图片进行车型识别并将识别结果返回给前端
-@app.route("/defineCar")
 def define():
     if len(img_path)>0:
         image = get_file_content(img_path)
@@ -68,12 +60,12 @@ def define():
 
         # 调用client对象的carDectect方法
         car_message = client.carDetect(image, options={"top_num": 1})["result"][0]["name"]
-        return  render_template("vehicleDefine.html",message = car_message,picture_url = img_url,color = car_color)
+        return  car_message,car_color,img_url
     else:
-        return render_template("vehicleDefine.html",message = "无图片，请选择一张图片进行识别")
+        str = "无图片，请选择一张图片进行识别"
+        return str
 
 #提示用户在本地选择一张汽车图片
-@app.route("/selectPicture")
 def open_picture():
     application_window = tk.Tk()
     application_window.withdraw()  # 将创建的tk窗口隐藏
@@ -88,16 +80,15 @@ def open_picture():
                                         filetypes=my_filetypes)
     #用户选择文件后销毁tk窗口
     application_window.destroy()
-    print(filename)
     if len(filename)>0:
         #获得用户选择的图片存储在服务器上的地址
         global img_url
         img_url = get_img_stream(filename)
         global img_path
         img_path = filename
-        return render_template("vehicleDefine.html",picture_url = img_url)
+        return filename,img_url
     else:
-        return render_template("vehicleDefine.html")
+        return filename
 
 
 
