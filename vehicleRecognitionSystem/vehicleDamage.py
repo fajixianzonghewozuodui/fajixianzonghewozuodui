@@ -115,8 +115,8 @@ def define():
                 f=f+'\n'+carmessage+'\n'+data
             return f,img_url
     else:
-        str = "无图片，请选择一张图片进行识别"
-        return str
+        str1 = "无图片，请选择一张图片进行识别"
+        return str1
 """
             return render_template("vehicleDamage.html",message = f,picture_url = img_url)
     else:

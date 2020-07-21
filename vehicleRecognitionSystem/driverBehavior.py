@@ -120,8 +120,8 @@ def define():
             behavior_message = data+'\n'+attributes
             return behavior_message,img_url
     else:
-        str = "无图片，请选择一张图片进行识别"
-        return str
+        str1 = "无图片，请选择一张图片进行识别"
+        return str1
 """
             return render_template("driverBehavior.html", message=data+'\n'+attributes, picture_url=img_url)
     else:
