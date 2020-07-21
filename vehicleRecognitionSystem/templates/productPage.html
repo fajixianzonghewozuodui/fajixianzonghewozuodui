@@ -1,0 +1,289 @@
+<!DOCTYPE >
+<html>
+<head>
+<title>
+	车牌号识别网站
+</title>
+<meta name="ahyy" content="车辆识别">
+<meta keywords="车辆识别，车牌号识别">
+<meta http-equiv="refresh" contnet="2";url="https://baike.baidu.com/item/TFBOYS/9083733?fr=aladdin"/>
+<style>
+.main{
+	width: 100%;
+
+
+}
+.dh{
+	width: 100%;
+	height: 40px;
+	background-color: #009FE9;
+	padding: 10px;
+}
+#yyl a{
+width: 50px;
+height: 30px;
+line-height: 30px;
+
+float: left;
+text-decoration: none;
+color: #fff;
+font-weight: bold;
+text-align: center;
+background: #009FE9;
+cursor: pointer;
+width: 130px;
+}
+.active{
+background: #009FD9;
+
+}
+.ll{
+	float: right;
+	width: 200px;
+}
+
+#parent{
+    position: relative;
+    margin: 5px auto;
+    padding: 0;
+    width: 1000px;
+    height:600px;
+}
+
+#uls{
+    position: relative;
+    margin: 0;
+    padding: 0;
+   width: 1000px;
+    height:600px;
+    overflow: hidden;
+}
+
+#img_ul{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 5000px;           /*多留出一张图片的宽度！*/
+    list-style: none;
+}
+#img_ul li{
+    float: left;
+    margin: 0;
+    padding: 0;
+   width: 1000px;
+    height:600px;
+}
+#img_ul li img{
+    width: 1000px;
+    height:600px;
+}
+
+#litCir_ul{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    right: 10px;
+    bottom: 10px;
+    list-style: none;
+}
+#litCir_ul li{
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    margin-left:10px ;
+    cursor: pointer;
+}
+
+li.active{
+    background-color: white;
+}
+li.quiet{
+    background-color: #1e90ff;
+}
+
+#buttons{
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+#buttons span{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Simsun;
+    font-size: 30px;
+    border: 1px solid #fff;
+    opacity: 0.3;
+    cursor: pointer;
+    color: #fff;
+    background: black;
+}
+a:link{
+
+            text-decoration: none;
+            }
+#left{
+    left: 5px;
+}
+#right{
+    left: 100%;
+    margin-left: -4
+}
+ .xbcl{
+    background-color: #F5F5F5;
+    width: 100%;
+    height:700px;
+ }
+ li{
+ 	list-style: none;
+ }
+ .hh{
+ 	color: black;
+ 	clear: both;;
+ }
+ .jw
+ {
+ 		background-color: #009FE9;
+ 		width: 100%;
+ 		height: 40px;
+ 		padding-top: 15px;
+ }
+
+span{
+    color: #750C0C;
+    size:3px;
+    font-family: 华文彩云;
+     }
+</style>
+<script>
+window.onload=function(){
+var oDiv=document.getElementById("main")
+var aHref= oDiv.getElementsByTagName("a");
+for(var i=0;i<aHref.length;i++){aHref[i].onmouseover=function(){
+this.className="active";
+}
+aHref[i].onmouseout=function(){
+this.className="";
+}
+}
+}
+</script>
+</head>
+<body>
+	<div id="yyl" class="dh">
+<div id="main">
+<a id="yy" href="http://127.0.0.1:5000/showProductPage">首页</a>
+<a id="yy" href="http://127.0.0.1:5000/showDefineCarInterface">车型识别</a>
+<a id="yy" href="http://127.0.0.1:5000/showDetectCarInterface">车辆检测</a>
+<a id="yy" href="http://127.0.0.1:5000/showPlateNumberInterface">车牌识别</a>
+<a id="yy" href="http://127.0.0.1:5000/showDefineCarPropertiesInterface">车辆属性识别</a>
+<a id="yy" href="http://127.0.0.1:5000/showDamageCarInterface">车损识别</a>
+
+</div>
+<div class="ll">
+	<a href="队伍.html">发际线总和我作队</a>
+</div>
+</div>
+
+
+    <div id= "parent">
+        <div id="uls">
+            <ul id="img_ul">
+                <li><img width="100%"  src="img/16.jpg"/></li>
+                <li><img width="100%" src="img/17.jpg"/></li>
+                <li><img width="100%" src="img/18.jpg"/></li>
+                <li><img width="100%" src="img/19.jpg"/></li>
+
+            </ul>
+            <ul id='litCir_ul'></ul>
+        </div>
+        <div id="buttons">
+            <span id="left">&lt;</span>
+            <span id="right">&gt;</span>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/2.js">
+
+    </script>
+ <div class="xbcl">
+             <p align="center"><br><br><table align="center"><tr>
+                <td><img src="img/7.jpg" width="30px"></td><td><font size="5px">产品介绍<b></b></font></td>
+
+             </tr>
+         </table></p>
+         <p><hr><br>
+            <table align="center">
+                <tr>
+                    <td>
+                        <table >
+                            <tr>
+                                <td width="300px"  height="100px"><img src="img/3.jpg" width="350px;"></font></td></tr>
+                                <tr>
+                                    <td width="300px" height="300px"><ul>
+                                        <li><a class="hh" href="http://127.0.0.1:5000/showDefineCarInterface" ><span>车型识别</span></a></li>
+                                        <li><font color="#93858E" size="2px">检测拍摄照片中的主体车辆位置，识别车辆品牌型号（如宝马X3）、年份、颜色信息，应该识别近１000款常见车型（小汽车为主）这个功能可用于相册管理、图片分类打标签、电子汽车说明书、一键拍照租车等场景</font></li>
+                                    </ul></td>
+                                </tr>
+                      </table>
+                    </td>
+                    <td width="50px"></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td width="300px"  height="100px"><font color="white" size="3px"><img src="img/2.jpg" width="350px;"></font></td></tr>
+                                <tr>
+                                    <td width="300px" height="300px"><ul>
+                                        <li><a href="http://127.0.0.1:5000/showPlateNumberInterface"><span>车牌识别</span></a></li>
+                                        <li><font color="#93858E" size="2px">支持对中国大陆机动车车牌的识别，包括地域编号和车牌<br><br><br><br></font></li>
+                                    </ul></td> </tr>
+                      </table>
+                  <td width="50px"></td>
+                                    <td>
+                                        <table>
+                            <tr>
+                                <td width="300px"  height="100px"><font color="white" size="3px"><img width="350px" src="img/1.jpg"></font></td></tr>
+                                <tr>
+                                    <td width="300px" height="300px"><ul>
+                                        <li><a href="http://127.0.0.1:5000/showDetectCarInterface"><span>车辆检测</span></a></li>
+                                        <li><font color="#93858E" size="2px">识别图像中的所有车辆，返回每辆车的类型和坐标位置，可识别小汽车、卡车、巴士、摩托车、三轮车5大类车辆并且可以在检测和识别的基础上，对小汽车、卡车、巴士、摩托车、三轮车5类车辆分别计数，支持指定不规则区域的车辆统计</font></li>
+                                    </ul></td> </tr>
+                            </table>
+                                    </td>
+                                    <td width="50px"></td>
+                                    <td>
+                                        <table>
+                            <tr>
+                                <td width="300px" height="100px"><font color="white" size="3px"><img width="415px" src="img/000.jpg"></font></td></tr>
+                                <tr>
+                                    <td width="300px" height="300px"><ul>
+                                        <li><a href="http://127.0.0.1:5000/showDefineCarPropertiesInterface"><span>车辆属性识别</span></a></li>
+                                        <li><font color="#93858E" size="2px">针对小汽车识别11种外观属性，包括：是否有车窗雨眉、是否有车顶架、副驾驶是否有人、驾驶位是否系安全带、遮阳板是否放下、车辆朝向等<br><br><br><br><font></font></li>
+                                    </ul></td> </tr>
+                            </table>
+                                    </td>
+              </tr>
+      </table>
+                    </td>
+                </tr>
+            </table>
+         </p>
+    </div>
+<div class="jw">
+    <div class="wb" align="center">
+    	<font size="4px" color="white">发际线总和我作队</font>
+    </div>
+</div>
+</body>
+</html>

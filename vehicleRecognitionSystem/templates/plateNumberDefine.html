@@ -1,0 +1,135 @@
+<!DOCTYPE >
+<html>
+<head>
+<title>
+	车牌识别
+</title>
+<meta name="ahyy" content="车辆识别">
+<meta keywords="车辆识别，车牌号识别">
+<meta http-equiv="refresh" contnet="2";url="https://baike.baidu.com/item/TFBOYS/9083733?fr=aladdin"/>
+<style type="text/css">
+.main{
+	width: 100%;
+
+
+}
+.dh{
+	width: 100%;
+	height: 40px;
+	background-color: #009FE9;
+	padding: 10px;
+}
+#yyl a{
+width: 50px;
+height: 30px;
+line-height: 30px;
+
+float: left;
+text-decoration: none;
+color: #fff;
+font-weight: bold;
+text-align: center;
+background: #009FE9;
+cursor: pointer;
+width: 130px;
+}
+.active{
+background: #009FD9;
+
+}
+ .hh{
+ 	color: black;
+ 	clear: both;;
+ }
+ .ll{
+	float: right;
+	width: 200px;
+}
+.ct{
+	width: 100%;
+}
+.lt{
+	float: left;
+	margin-left: 120px;
+}
+.rt{
+	float: right;
+	margin-right: 120px;
+}
+.jw
+ {
+ 		background-color: #009FE9;
+ 		width: 100%;
+ 		height: 40px;
+ 		padding-top: 15px;
+ 		clear: both;
+ }
+.xbcl{
+ 	height:600px;
+ }
+</style>
+<script>
+window.onload=function(){
+var oDiv=document.getElementById("main")
+var aHref= oDiv.getElementsByTagName("a");
+for(var i=0;i<aHref.length;i++){aHref[i].onmouseover=function(){
+this.className="active";
+}
+aHref[i].onmouseout=function(){
+this.className="";
+}
+}
+}
+</script>
+</head>
+<body>
+	<div id="yyl" class="dh">
+<div id="main">
+<a id="yy" href="http://127.0.0.1:5000/showProductPage">首页</a>
+<a id="yy" href="http://127.0.0.1:5000/showDefineCarInterface">车型识别</a>
+<a id="yy" href="http://127.0.0.1:5000/showDetectCarInterface">车辆检测</a>
+<a id="yy" href="http://127.0.0.1:5000/showPlateNumberInterface">车牌识别</a>
+<a id="yy" href="http://127.0.0.1:5000/showDefineCarPropertiesInterface">车辆属性识别</a>
+<a id="yy" href="http://127.0.0.1:5000/showDamageCarInterface">车损识别</a>
+
+</div>
+<div class="ll">
+	<a href="队伍.html">发际线总和我作队</a>
+</div>
+</div>
+<div class="ct">
+<img src="img/8.jpg" width="100%" height="250px"></div>
+<div class="xbcl">
+             <p align="center"><br><br><table align="center"><tr>
+                <td><img src="img/7.jpg" width="30px"></td><td><font size="5px">车牌识别<b></b></font></td>
+
+             </tr>
+         </table></p>
+         <p><hr><br>
+           </p>
+
+
+           <div class="lt" >
+           	<table><tr><td height="200px"></td></tr>
+           		<tr><td width="450px"><span color="#93858E" size="3px">基于SVM算法训练模型颜色识别加矩形识别提高准确率<br>支持对中国大陆机动车车牌的识别，包括地域编号和车牌号</span></td></tr>
+<tr><td><br><form action="selectPictureNumber" method="get">
+                <input type="submit" value="选择图片">
+                </form></td></tr>
+                <tr><td><br><form action="defineCarNumber" method="get">
+                <input type="submit" value="识别图片">
+                </form></td></tr>
+           		           	</table>
+           </div>
+           <div class="rt">
+           	<img src="img/13.jpg" width="650px">
+           </div>
+
+       </div>
+       <div class="jw">
+    <div class="wb" align="center">
+    	<font size="4px" color="white">发际线总和我作队</font>
+    </div>
+</div>
+
+</body>
+</html>
