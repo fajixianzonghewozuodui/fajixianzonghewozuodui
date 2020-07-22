@@ -82,27 +82,21 @@ def open_picture():
     #当用户在选择文件对话框上点了取消后，得实现页面不刷新，而不是点了取消后还刷新，而且直接刷新成初始页面
     #用户选择文件后销毁tk窗口
     application_window.destroy()
-    #当用户没有选择图片，而是取消时
-    global img_path
-    global img_url
+
     if filename is None:
-        #global img_path
+        global img_path
         img_path = "i"
-        #global img_url
+        global img_url
         img_url = None
         return "无"
     else:
         if len(filename)>0:
             # 获得用户选择的图片存储在服务器上的地址
-            #global img_url
             img_url = get_img_stream(filename)
-            #global img_path
             img_path = filename
             return filename, img_url
         else:
-           # global img_path
             img_path = "i"
-            #global img_url
             img_url = None
             return "无"
 
