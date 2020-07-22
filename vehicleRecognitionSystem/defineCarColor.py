@@ -9,17 +9,12 @@ import colorsys
 from PIL import Image
 import os
 from colorsys import rgb_to_hsv
+import pandas as pd
 
-#设定颜色字典
-colors = dict((
-("红色",(125, 0, 0)),
-("橙色",(255, 165, 0)),
-("黄色",(255, 255, 0)),
-("蓝色",(0, 0, 125) ),
-("紫色",(128, 0, 128)),
-("黑色",(50, 50, 50)),
-("白色",(220, 220, 220)),
-("粉色",(200, 98, 132)), ))
+
+index = ["color", "color_name", "hex", "R", "G", "B"]
+#将已经写好的颜色字典导入用于通过rgb值获取相应的颜色
+csv_df = pd.read_csv('colors.csv', names=index, header=None,encoding="utf-8")
 
 # 识别并裁剪出图片中的物体
 def crop_img(path):
@@ -106,64 +101,26 @@ def crop_img(path):
 
     image = Image.open('croImg.jpg')
     color_to_match = get_dominant_color(image)
-    car_color = min_color_diff(color_to_match, colors)
+    car_color = get_color_name(color_to_match[0],color_to_match[1],color_to_match[2])
     #返回汽车的颜色
     return car_color
 
-#找出颜色字典中与输入的rgb最接近的颜色，采用求距离的方式，看哪个颜色最接近
-def min_color_diff( color_to_match, colors):
-    i = 0
-    min_distance = 270000
-    #保存距离最近的颜色
-    max_color = None
-    #用循环算出输入的rgb与颜色字典中9种颜色距离最近的颜色
-    while(i<len(colors)):
-        if i == 0:
-            a = (color_to_match[0]-colors["红色"][0])**2+(color_to_match[1]-colors["红色"][1])**2+(color_to_match[2]-colors["红色"][2])**2
-            #距离更小就更新max_color变量
-            if a<min_distance:
-                min_distance = a
-                max_color = "红色"
-        elif i==1:
-            a = (color_to_match[0]-colors["橙色"][0])**2+(color_to_match[1]-colors["橙色"][1])**2+(color_to_match[2]-colors["橙色"][2])**2
-            if a<min_distance:
-                min_distance = a
-                max_color = "橙色"
-        elif i==2:
-            a = (color_to_match[0]-colors["黄色"][0])**2+(color_to_match[1]-colors["黄色"][1])**2+(color_to_match[2]-colors["黄色"][2])**2
-            if a<min_distance:
-                min_distance = a
-                max_color = "黄色"
-        elif i==3:
-            a = (color_to_match[0]-colors["蓝色"][0])**2+(color_to_match[1]-colors["蓝色"][1])**2+(color_to_match[2]-colors["蓝色"][2])**2
-            if a<min_distance:
-                min_distance = a
-                max_color = "蓝色"
-        elif i==4:
-            a = (color_to_match[0]-colors["紫色"][0])**2+(color_to_match[1]-colors["紫色"][1])**2+(color_to_match[2]-colors["紫色"][2])**2
-            if a<min_distance:
-                min_distance = a
-                max_color = "紫色"
-        elif i==5:
-            a = (color_to_match[0]-colors["黑色"][0])**2+(color_to_match[1]-colors["黑色"][1])**2+(color_to_match[2]-colors["黑色"][2])**2
-            if a<min_distance:
-                min_distance = a
-                max_color = "黑色"
-        elif i==6:
-            a = (color_to_match[0]-colors["白色"][0])**2+(color_to_match[1]-colors["白色"][1])**2+(color_to_match[2]-colors["白色"][2])**2
-            if a<min_distance:
-                min_distance = a
-                max_color = "白色"
-        else:
-            a = (color_to_match[0] - colors["粉色"][0]) ** 2 + (color_to_match[1] - colors["粉色"][1]) ** 2 + ( color_to_match[2] - colors["粉色"][2]) ** 2
-            if a < min_distance:
-                min_distance = a
-                max_color = "粉色"
-        i = i+1
-    #删掉之前存储到本地的图片
+
+#输入rgb值，返回相应的颜色
+def get_color_name(r, g, b):
+    min_diff = 10000
+    color_name = ''
+    for i in range(len(csv_df)):
+        d = abs(r- int(csv_df.loc[i,"R"])) + abs(g- int(csv_df.loc[i,"G"]))+ abs(b- int(csv_df.loc[i,"B"]))
+        if d <= min_diff:
+            min_diff = d
+            color_name = csv_df.loc[i,"color_name"]
+
+    # 删掉之前存储到本地的图片
     if os.path.exists("croImg.jpg"):
         os.remove("croImg.jpg")
-    return max_color
+    return color_name
+
 
 
 

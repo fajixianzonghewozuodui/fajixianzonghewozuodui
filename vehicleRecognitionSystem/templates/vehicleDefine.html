@@ -119,10 +119,11 @@ this.className="";
            </p>
            <div class="lt" >
            	<table>
-           		<tr><td width="450px"><span color="#93858E" size="3px">型号为：{{ message }}</span></td></tr>
-                <tr><td width="450px"><span color="#93858E" size="3px">颜色为：{{ color }}</span></td></tr>
-                <tr><td><br><form action="selectPicture" method="get">
-                <input type="submit" value="选择图片">
+           		<tr><td width="450px"><span color="#93858E" size="3px">{{ message }}</span></td></tr>
+                <tr><td width="450px"><span color="#93858E" size="3px">{{ color }}</span></td></tr>
+                <tr><td><br><form action="selectPicture" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="fileName" accept="image/*"/>
+                <input type="submit" value="预览">
                 </form></td></tr>
                 <tr><td><br><form action="defineCar" method="get">
                 <input type="submit" value="识别图片">
