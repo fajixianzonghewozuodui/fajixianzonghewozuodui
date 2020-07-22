@@ -3,7 +3,7 @@ import plateNumberDefine
 import vehicleDetect
 import vehicleDamage
 import vehicleDefine
-from flask import Flask, render_template
+from flask import Flask, render_template,request, jsonify
 
 
 app = Flask(__name__)
@@ -51,9 +51,12 @@ def car_behavior_interface():
 
 
 #实现了车型识别
-@app.route("/selectPicture")
+@app.route("/selectPicture",methods=["POST"])
 def define_open_picture():
-    mlist = list(vehicleDefine.open_picture())
+    # 通过file标签获取文件
+    f = request.files["file"]
+    print(f.filename)
+    mlist = list(vehicleDefine.open_picture("E:/testimage/test9.jpg"))
     i = len(mlist)
     if i==2:
         return render_template("vehicleDefine.html",picture_url = mlist[1])

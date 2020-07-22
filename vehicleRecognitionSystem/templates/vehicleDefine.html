@@ -104,7 +104,7 @@ this.className="";
     <a id="yy" href="http://127.0.0.1:5000/showDriverBehaviorInterface">驾驶行为分析</a>
 </div>
 <div class="ll">
-	<a href="队伍.html">发际线总和我作队 </a>
+	<a href="http://127.0.0.1:5000/">发际线总和我作队</a>
 </div>
 </div>
 <div class="ct">
@@ -122,6 +122,19 @@ this.className="";
 
 
            <div class="lt" >
+<<<<<<< HEAD
+           	<table>
+           		<tr><td width="450px"><span color="#93858E" size="3px">{{ message }}</span></td></tr>
+                <tr><td width="450px"><span color="#93858E" size="3px">{{ color }}</span></td></tr>
+                <tr><td><br><form action="selectPicture" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="fileName" accept="image/*"/>
+                <input type="submit" value="预览">
+                </form></td></tr>
+                <tr><td><br><form action="defineCar" method="get">
+                <input type="submit" value="识别图片">
+                </form></td></tr>
+           	</table>
+=======
            	<table><tr><td colspan="2" width="600px"><img src="data:;base64,{{ picture_url }}" width="500px" height="500px"> <!-- 在img里显示图片 -->
             </td></tr>
                 <tr><td width="300px">
@@ -132,6 +145,7 @@ this.className="";
                         <input type="submit" value="识别图片"></form></td>
                 </tr>
            		           	</table>
+>>>>>>> 009be5ff683a2cc76985a520f2c4c31cbab81c7c
            </div>
            <div class="rt">
                <div class="wbk"><font size="4px">识别结果为：</font><br>型号为：{{ message }}<br>颜色为：{{ color }}</div>

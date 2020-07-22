@@ -67,7 +67,8 @@ def define():
 
 
 #提示用户在本地选择一张汽车图片
-def open_picture():
+def open_picture(filename):
+    """
     application_window = tk.Tk()
     application_window.withdraw()  # 将创建的tk窗口隐藏
 
@@ -82,6 +83,7 @@ def open_picture():
     #当用户在选择文件对话框上点了取消后，得实现页面不刷新，而不是点了取消后还刷新，而且直接刷新成初始页面
     #用户选择文件后销毁tk窗口
     application_window.destroy()
+    """
 
     if filename is None:
         global img_path
