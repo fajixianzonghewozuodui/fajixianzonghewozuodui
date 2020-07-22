@@ -118,18 +118,19 @@ this.className="";
 
 
            <div class="lt" >
-           	<table><tr><td height="150px"></td></tr>
-           		<tr><td width="450px"><span color="#93858E" size="3px"><pre>{{ message }}</pre></span></td></tr>
- <tr><td><br><form action="selectPictureDamage" method="get">
-                <input type="submit" value="选择图片">
-                </form></td></tr>
-                <tr><td><br><form action="defineCarDamage" method="get">
-                <input type="submit" value="识别图片">
-                </form></td></tr>
+           	<table><tr><td colspan="2" width="600px"><img src="data:;base64,{{ picture_url }}" width="500px" height="500px"> <!-- 在img里显示图片 -->
+            </td></tr>
+                <tr><td width="300px">
+                    <form action="selectPictureNumber" method="get">
+                        <input type="submit" value="选择图片"></form></td>
+                    <td width="300px">
+                    <form action="defineCarNumber" method="get">
+                        <input type="submit" value="识别图片"></form></td>
+                </tr>
            		           	</table>
            </div>
            <div class="rt">
-           	<img alt="" src="data:;base64,{{ picture_url }}">
+           	<textarea width="500px" height="500px">识别结果<br>{{ massage }}</textarea>
            </div>
 
        </div>
