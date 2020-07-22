@@ -35,7 +35,7 @@ def get_img_stream(img_local_path):
     img_stream = base64.b64encode(img_stream).decode()
   return img_stream
 
-img_path = None
+img_path = "i"
 img_url = None
 
 
@@ -43,9 +43,9 @@ app = Flask(__name__)
 
 
 # 打开图片文件并读取二进制图片信息
-#实现车损检测
+#实现车辆检测
 def define():
-    if len(img_path)>0:
+    if len(img_path)>1:
         f= get_file_content(img_path)
         host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=9KS0meTEo6pmtZ6tcxw1CdMN&client_secret=6nAE23Avqe5i1EvpAgo2BhGTifVlYNA9'
         response = requests.get(host)
@@ -116,11 +116,11 @@ def define():
             return f,img_url
     else:
         str1 = "无图片，请选择一张图片进行识别"
-        return str1
+        return str1,"error"
 """
-            return render_template("vehicleDamage.html",message = f,picture_url = img_url)
+        return render_template("vehicleDetect.html",message = car_message+'\n'+'\n'+data,picture_url = img_url)
     else:
-        return render_template("vehicleDamage.html",message = "无图片，请选择一张图片进行识别")
+        return render_template("vehicleDetect.html",message = "无图片，请选择一张图片进行识别")
 """
 
 #打开图片
@@ -144,7 +144,10 @@ def openPicture():
         img_path = filename
         return filename, img_url
     else:
+        img_path = "i"
+        img_url = None
         return filename
+
 
 
 
