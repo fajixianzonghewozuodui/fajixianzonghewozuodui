@@ -100,7 +100,7 @@ this.className="";
 
 </div>
 <div class="ll">
-	<a href="队伍.html">发际线总和我作队</a>
+	<a href="http://127.0.0.1:5000/">发际线总和我作队</a>
 </div>
 </div>
 <div class="ct">
@@ -118,18 +118,19 @@ this.className="";
 
 
            <div class="lt" >
-           	<table><tr><td height="150px"></td></tr>
-           		<tr><td width="450px"><span color="#93858E" size="3px"><pre>{{ message }}</pre></span></td></tr>
- <tr><td><br><form action="selectPictureDamage" method="get">
-                <input type="submit" value="选择图片">
-                </form></td></tr>
-                <tr><td><br><form action="defineCarDamage" method="get">
-                <input type="submit" value="识别图片">
-                </form></td></tr>
+           	<table><tr><td colspan="2" width="600px"><img src="data:;base64,{{ picture_url }}" width="500px" height="500px"> <!-- 在img里显示图片 -->
+            </td></tr>
+                <tr><td width="300px">
+                    <form action="selectPictureDamage" method="get">
+                        <input type="submit" value="选择图片"></form></td>
+                    <td width="300px">
+                    <form action="defineCarDamage" method="get">
+                        <input type="submit" value="识别图片"></form></td>
+                </tr>
            		           	</table>
            </div>
            <div class="rt">
-           	<img alt="" src="data:;base64,{{ picture_url }}">
+           		<textarea width="500px" height="500px">{{ message }}</textarea>
            </div>
 
        </div>

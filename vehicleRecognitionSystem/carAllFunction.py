@@ -88,6 +88,7 @@ def detect_open_picture():
 def detect_car():
     mlist = list(vehicleDetect.define())
     i = len(mlist)
+    print(mlist)
     if i ==2:
         return render_template("vehicleDetect.html",message = mlist[0],picture_url=mlist[1])
     else:
