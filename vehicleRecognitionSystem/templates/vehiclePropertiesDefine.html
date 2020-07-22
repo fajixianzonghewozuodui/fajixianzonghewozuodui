@@ -112,18 +112,19 @@ this.className="";
 
 
            <div class="lt" >
-           	<table><tr><td height="200px"></td></tr>
-           		<tr><td width="450px"><span color="#93858E" size="3px">针对小汽车识别11种外观属性，包括：是否有车窗雨眉、是否有车顶架、副驾驶是否有人、驾驶位是否系安全带、遮阳板是否放下、车辆朝向等</span></td></tr>
-<tr><td><br><form action="selectPictureProperties" method="get">
-                <input type="submit" value="选择图片">
-                </form></td></tr>
-                <tr><td><br><form action="defineCarProperties" method="get">
-                <input type="submit" value="识别图片">
-                </form></td></tr>
+           	<table><<tr><td colspan="2" width="600px"><img src="data:;base64,{{ picture_url }}" width="500px" height="500px"> <!-- 在img里显示图片 -->
+            </td></tr>
+                <tr><td width="300px">
+                    <form action="selectPictureNumber" method="get">
+                        <input type="submit" value="选择图片"></form></td>
+                    <td width="300px">
+                    <form action="defineCarNumber" method="get">
+                        <input type="submit" value="识别图片"></form></td>
+                </tr>
            		           	</table>
            </div>
            <div class="rt">
-           	<img src="img/9.jpg" width="600px">
+            <textarea width="500px" height="500px">识别结果<br>{{ massage }}</textarea>
            </div>
 
        </div>
