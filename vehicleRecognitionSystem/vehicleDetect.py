@@ -112,15 +112,19 @@ def define():
             print("距左侧距离", vehicle[3])
             print("高度:               ", vehicle[4])
             print("置信度", vehicle[5])
-            data="\n车辆类型:"+str(vehicle[0])+\
-                 "\n宽度:"+str(vehicle[1])+"\t距顶部距离:"+str(vehicle[2])+"\t距左侧距离:"+str(vehicle[3])+"\t高度:"+str(vehicle[4])+"\n置信度:"+str(vehicle[5])+'\n'+data+'\n'+'\n'
-            car_message="\n车辆总数："+str(vehicle_num)+'\n'+\
-                    "摩托车数量："+str(motorbike_num)+\
-                    "\t三轮车数量："+str(tricycle_num)+\
-                    "\t汽车数量："+str(car_num)+\
-                    "\t卡车数量："+str(truck_num)+\
-                    "\t公交车数量："+str(bus_num)+\
-                    "\n汽车车牌数量："+str(carplate_num)
+            data = "\n车辆类型:" + str(vehicle[0]) + \
+                   "\n宽度:" + str(vehicle[1]) + \
+                   "\n距顶部距离:" + str(vehicle[2]) + \
+                   "\n距左侧距离:" + str(vehicle[3]) + \
+                   "\n高度:" + str(vehicle[4]) + \
+                   "\n置信度:" + str(vehicle[5]) + '\n' + data + '\n' + '\n'
+            car_message = "车辆总数：" + str(vehicle_num) + \
+                          "\n摩托车数量：" + str(motorbike_num) + \
+                          "\n三轮车数量：" + str(tricycle_num) + \
+                          "\n汽车数量：" + str(car_num) + \
+                          "\n卡车数量：" + str(truck_num) + \
+                          "\n公交车数量：" + str(bus_num) + \
+                          "\n汽车车牌数量：" + str(carplate_num)
         detection_message = car_message+'\n'+'\n'+data
         return detection_message,img_url
     else:
