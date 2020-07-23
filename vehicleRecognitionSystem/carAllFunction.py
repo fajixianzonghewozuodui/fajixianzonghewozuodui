@@ -69,8 +69,8 @@ def define_open_picture():
     f.save(path)
     mlist = list(vehicleDefine.open_picture(path))
     i = len(mlist)
-    if i==2:
-        return render_template("vehicleDefine.html",picture_url = mlist[1])
+    if i == 2:
+        return render_template("vehicleDefine.html", picture_url=mlist[1])
     else:
         return render_template("vehicleDefine.html")
 
@@ -107,6 +107,7 @@ def detect_open_picture():
     else:
         return render_template("vehicleDetect.html")
 
+
 @app.route("/defineCarDetect")
 def detect_car():
     mlist = list(vehicleDetect.define())
@@ -131,8 +132,8 @@ def number_open_picture():
     f.save(path)
     mlist = list(plateNumberDefine.open_picture(path))
     i = len(mlist)
-    if i==2:
-        return render_template("plateNumberDefine.html",picture_url = mlist[1])
+    if i == 2:
+        return render_template("plateNumberDefine.html", picture_url=mlist[1])
     else:
         return render_template("plateNumberDefine.html")
 

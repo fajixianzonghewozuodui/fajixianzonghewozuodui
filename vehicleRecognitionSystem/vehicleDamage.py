@@ -45,6 +45,7 @@ app = Flask(__name__)
 # 打开图片文件并读取二进制图片信息
 #实现车辆检测
 def define():
+    global img_url,img_path
     if len(img_path)>1:
         f= get_file_content(img_path)
         host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=9KS0meTEo6pmtZ6tcxw1CdMN&client_secret=6nAE23Avqe5i1EvpAgo2BhGTifVlYNA9'
@@ -71,8 +72,12 @@ def define():
         if response:
             json_temp = response.json()
             print(json_temp)
+            numeric_info = jsonpath.jsonpath(json_temp, '$..numeric_info')
+            if numeric_info == False:
+                return "无车损或者图片无法正确识别", img_url
             f=""
             data = ""
+            carmessage=""
             # 车损位置
             parts = jsonpath.jsonpath(json_temp, '$..parts')
             print("车损位置", parts)
@@ -82,12 +87,14 @@ def define():
              # 置信度
             probability = jsonpath.jsonpath(json_temp, '$..probability')
             print("置信度", probability)
-            carmessage = "车损位置：" + str(parts) + \
-                            "\n车损类型：" + str(type) + \
-                            "\n置信度：" + str(probability)
-            numeric_info = jsonpath.jsonpath(json_temp, '$..numeric_info')
-            if numeric_info==False:
-                    return "无车损或者图片无法正确识别",img_url
+            c=len(parts)
+            i=0
+            while i<c:
+                carmessage = carmessage+"车损位置：" + str(parts[i]) + \
+                            "\n车损类型：" + str(type[i]) + \
+                            "\n置信度：" + str(probability[i])+'\n'+'\n'
+                i = i + 1
+
             count = len(numeric_info)
             vehicle_info = [['a', 'a', 'a', 'a', 'a', 'a'] for k in range(count)]
             i=0
@@ -108,6 +115,7 @@ def define():
                         "\n高度:" + str(vehicle[3]) + '\n' + data + '\n' + '\n'
 
             f=f+'\n'+carmessage+'\n'+data
+            img_path = "i"
             return f,img_url
     else:
         str1 = "无图片，请选择一张图片进行识别"

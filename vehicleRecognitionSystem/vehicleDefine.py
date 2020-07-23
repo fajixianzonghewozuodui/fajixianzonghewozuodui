@@ -49,6 +49,7 @@ app = Flask(__name__)
 
 # 对用户选择的图片进行车型识别并将识别结果返回给前端
 def define():
+    global img_path,img_url
     if len(img_path)>1:
         image = get_file_content(img_path)
         #调用相应方法获得汽车的颜色
@@ -60,6 +61,7 @@ def define():
 
         # 调用client对象的carDectect方法
         car_message = client.carDetect(image, options={"top_num": 1})["result"][0]["name"]
+        img_path = "i"
         return  car_message,car_color,img_url
     else:
         str = "无图片，请选择一张图片进行识别"
