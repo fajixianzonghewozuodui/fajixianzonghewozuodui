@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-	车辆检测
+	车型识别
 </title>
 <meta name="ahyy" content="车辆识别">
 <meta keywords="车辆识别，车牌号识别">
@@ -64,6 +64,11 @@ background: #009FD9;
  		padding-top: 15px;
  		clear: both;
  }
+.wbk{
+    width:400px;
+    height: 500px;
+
+}
   .xbcl{
   height: 600px;
  }
@@ -118,6 +123,7 @@ this.className="";
 
            <div class="lt" >
 <<<<<<< HEAD
+<<<<<<< HEAD
            	<table>
            		<tr><td width="450px"><span color="#93858E" size="3px">{{ message }}</span></td></tr>
                 <tr><td width="450px"><span color="#93858E" size="3px">{{ color }}</span></td></tr>
@@ -131,14 +137,21 @@ this.className="";
            	</table>
 =======
            	<table><tr><td colspan="2" width="600px"><img src="data:;base64,{{ picture_url }}" width="500px" height="500px"> <!-- 在img里显示图片 -->
+=======
+
+           	<table><tr><td colspan="2" width="700px"><img src="data:;base64,{{ picture_url }}" width="700px" height="500px"> <!-- 在img里显示图片 -->
+>>>>>>> a0bcb61648524f50a841a679a52a4983c625dc53
             </td></tr>
                 <tr><td width="300px">
                 </tr>
            		           	</table>
            </div>
            <div class="rt">
-           	<<textarea width="500px" height="500px">型号为：{{ message }}</textarea>
-               <<textarea width="500px" height="500px">颜色为：{{ color }}</textarea>
+               <div class="wbk">
+                   <font size="4px">识别结果为：</font><br> <textarea rows="30" cols="60">{{ message }}       {{ color }}
+        </textarea>
+                   </div>
+
            </div>
 
        </div>
