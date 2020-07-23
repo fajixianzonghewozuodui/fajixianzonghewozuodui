@@ -4,6 +4,7 @@ import vehicleDetect
 import vehicleDamage
 import vehicleDefine
 from flask import Flask, render_template,request, jsonify
+import os
 
 import vehiclePropertiesDefine
 
@@ -77,16 +78,17 @@ def define_open_picture():
 @app.route("/defineCar")
 def define_car():
     mlist = list(vehicleDefine.define())
+    global img_name_define
+    if os.path.exists(img_name_define):
+        os.remove(img_name_define)
+    # 用完一次后将全局变量置为初值，暂时不知道有没有必要，先不加吧
+    # img_name_define = "i"
     i = len(mlist)
     if i==3:
         return render_template("vehicleDefine.html",message = mlist[0],color = mlist[1],picture_url = mlist[2])
     else:
         return render_template("vehicleDefine.html",message = mlist[0])
-    global img_name_define
-    if os.path.exists(img_name_define):
-        os.remove(img_name_define)
-    #用完一次后将全局变量置为初值，暂时不知道有没有必要，先不加吧
-    #img_name_define = "i"
+
 
 
 #实现了车辆检测
@@ -108,14 +110,15 @@ def detect_open_picture():
 @app.route("/defineCarDetect")
 def detect_car():
     mlist = list(vehicleDetect.define())
+    global img_name_detect
+    if os.path.exists(img_name_detect):
+        os.remove(img_name_detect)
     i = len(mlist)
     if i ==2:
         return render_template("vehicleDetect.html",message = mlist[0],picture_url=mlist[1])
     else:
         return render_template("vehicleDetect.html",message = mlist[0])
-    global img_name_detect
-    if os.path.exists(img_name_detect):
-        os.remove(img_name_detect)
+
 
 #实现了车牌识别
 @app.route("/selectPictureNumber",methods=["POST"])
@@ -138,14 +141,15 @@ def number_define():
     c = plateNumberDefine.CardPredictor()
     c.train_svm()
     mlist = list(c.predict())  # 带检测图片（在test中选择图片，也可以自己添加图片)
+    global img_name_number
+    if os.path.exists(img_name_number):
+        os.remove(img_name_number)
     i = len(mlist)
     if i ==3:
         return render_template("plateNumberDefine.html",message = mlist[0],picture_url = mlist[1])
     else:
         return render_template("plateNumberDefine.html",message = mlist[0])
-    global img_name_number
-    if os.path.exists(img_name_number):
-        os.remove(img_name_number)
+
 
 
 #实现了车辆属性识别
@@ -167,14 +171,15 @@ def Att_open_picture():
 @app.route("/defineCarAtt")
 def Att_car():
     mlist = list(vehiclePropertiesDefine.define())
+    global img_name_Att
+    if os.path.exists(img_name_Att):
+        os.remove(img_name_Att)
     i = len(mlist)
     if i==2:
         return render_template("vehiclePropertiesDefine.html",message = mlist[0],picture_url=mlist[1])
     else:
         return render_template("vehiclePropertiesDefine.html",message = mlist[0])
-    global img_name_Att
-    if os.path.exists(img_name_Att):
-        os.remove(img_name_Att)
+
 
 
 
@@ -199,14 +204,15 @@ def damage_open_picture():
 @app.route("/defineCarDamage")
 def damage_car():
     mlist = list(vehicleDamage.define())
+    global img_name_damage
+    if os.path.exists(img_name_damage):
+        os.remove(img_name_damage)
     i = len(mlist)
     if i==2:
         return render_template("vehicleDamage.html",message = mlist[0],picture_url=mlist[1])
     else:
         return render_template("vehicleDamage.html",message = mlist[0])
-    global img_name_damage
-    if os.path.exists(img_name_damage):
-        os.remove(img_name_damage)
+
 
 #实现了驾驶行为检测
 @app.route("/selectPictureBehavior",methods=["POST"])
@@ -227,14 +233,15 @@ def behavior_open_picture():
 @app.route("/defineCarBehavior")
 def behavior_define():
     mlist = list(driverBehavior.define())
+    global img_name_behavior
+    if os.path.exists(img_name_behavior):
+        os.remove(img_name_behavior)
     i = len(mlist)
     if i==2:
         return render_template("driverBehavior.html",message = mlist[0],picture_url=mlist[1])
     else:
         return render_template("driverBehavior.html",message = mlist[0])
-    global img_name_behavior
-    if os.path.exists(img_name_behavior):
-        os.remove(img_name_behavior)
+
 
 if __name__ == '__main__':
     app.run()
