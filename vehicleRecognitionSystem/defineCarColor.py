@@ -12,9 +12,6 @@ from colorsys import rgb_to_hsv
 import pandas as pd
 
 
-index = ["color", "color_name", "hex", "R", "G", "B"]
-#将已经写好的颜色字典导入用于通过rgb值获取相应的颜色
-csv_df = pd.read_csv('colors.csv', names=index, header=None,encoding="utf-8")
 
 # 识别并裁剪出图片中的物体
 def crop_img(path):
@@ -108,6 +105,9 @@ def crop_img(path):
 
 #输入rgb值，返回相应的颜色
 def get_color_name(r, g, b):
+    index = ["color", "color_name", "hex", "R", "G", "B"]
+    # 将已经写好的颜色字典导入用于通过rgb值获取相应的颜色
+    csv_df = pd.read_csv('colors.csv', names=index, header=None, encoding="utf-8")
     min_diff = 10000
     color_name = ''
     for i in range(len(csv_df)):
@@ -138,7 +138,7 @@ def get_dominant_color(image):
     return main_colors[0][1]
 
 if __name__ == '__main__':
-    crop_img("E:/testimage/test3.jpg")
+    pass
 
 
 
