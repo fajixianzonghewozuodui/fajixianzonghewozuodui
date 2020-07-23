@@ -73,6 +73,7 @@ def define():
             print(json_temp)
             f=""
             data = ""
+            carmessage=""
             # 车损位置
             parts = jsonpath.jsonpath(json_temp, '$..parts')
             print("车损位置", parts)
@@ -82,9 +83,13 @@ def define():
              # 置信度
             probability = jsonpath.jsonpath(json_temp, '$..probability')
             print("置信度", probability)
-            carmessage = "车损位置：" + str(parts) + \
-                            "\n车损类型：" + str(type) + \
-                            "\n置信度：" + str(probability)
+            c=len(parts)
+            i=0
+            while i<c:
+                carmessage = carmessage+"车损位置：" + str(parts[i]) + \
+                            "\n车损类型：" + str(type[i]) + \
+                            "\n置信度：" + str(probability[i])+'\n'
+                i = i + 1
             numeric_info = jsonpath.jsonpath(json_temp, '$..numeric_info')
             if numeric_info==False:
                     return "无车损或者图片无法正确识别",img_url
