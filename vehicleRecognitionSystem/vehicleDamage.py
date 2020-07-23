@@ -87,7 +87,7 @@ def define():
                             "\n置信度：" + str(probability)
             numeric_info = jsonpath.jsonpath(json_temp, '$..numeric_info')
             if numeric_info==False:
-                    return "识别失败",img_url
+                    return "无车损或者图片无法正确识别",img_url
             count = len(numeric_info)
             vehicle_info = [['a', 'a', 'a', 'a', 'a', 'a'] for k in range(count)]
             i=0
