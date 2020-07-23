@@ -49,22 +49,24 @@ def damage_car_interface():
 def car_behavior_interface():
     return render_template("driverBehavior.html")
 
-#全局变量用于保存要删除的图片文件的名字
+#全局变量用于保存要删除的图片文件的路径
 img_name_define = "i"
 img_name_detect = "i"
 img_name_number = "i"
 img_name_damage = "i"
 img_name_behavior = "i"
 img_name_Att = "i"
+
 #实现了车型识别
 @app.route("/selectPicture",methods=["POST"])
 def define_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_define
-    img_name_define = f.filename
-    f.save(f.filename)
-    mlist = list(vehicleDefine.open_picture(f.filename))
+    path = "img/" + f.filename
+    img_name_define = path
+    f.save(path)
+    mlist = list(vehicleDefine.open_picture(path))
     i = len(mlist)
     if i==2:
         return render_template("vehicleDefine.html",picture_url = mlist[1])
@@ -93,9 +95,10 @@ def detect_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_detect
-    img_name_detect = f.filename
-    f.save(f.filename)
-    mlist = list(vehicleDetect.openPicture(f.filename))
+    path = "img/" + f.filename
+    img_name_detect = path
+    f.save(path)
+    mlist = list(vehicleDetect.openPicture(path))
     i = len(mlist)
     if i == 2:
         return render_template("vehicleDetect.html", picture_url=mlist[1])
@@ -120,9 +123,10 @@ def number_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_number
-    img_name_number = f.filename
-    f.save(f.filename)
-    mlist = list(plateNumberDefine.open_picture(f.filename))
+    path = "img/" + f.filename
+    img_name_number = path
+    f.save(path)
+    mlist = list(plateNumberDefine.open_picture(path))
     i = len(mlist)
     if i==2:
         return render_template("plateNumberDefine.html",picture_url = mlist[1])
@@ -149,10 +153,11 @@ def number_define():
 def Att_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
-    global img_name_damage
-    img_name_damage = f.filename
-    f.save(f.filename)
-    mlist = list(vehiclePropertiesDefine.openPicture(f.filename))
+    global img_name_Att
+    path = "img/" + f.filename
+    img_name_Att = path
+    f.save(path)
+    mlist = list(vehiclePropertiesDefine.openPicture(path))
     i = len(mlist)
     if i == 2:
         return render_template("vehiclePropertiesDefine.html", picture_url=mlist[1])
@@ -181,9 +186,10 @@ def damage_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_damage
-    img_name_damage = f.filename
-    f.save(f.filename)
-    mlist = list(vehicleDamage.openPicture(f.filename))
+    path = "img/" + f.filename
+    img_name_damage = path
+    f.save(path)
+    mlist = list(vehicleDamage.openPicture(path))
     i = len(mlist)
     if i == 2:
         return render_template("vehicleDamage.html", picture_url=mlist[1])
@@ -207,10 +213,11 @@ def damage_car():
 def behavior_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
-    global img_name_damage
-    img_name_damage = f.filename
-    f.save(f.filename)
-    mlist = list(driverBehavior.openPicture(f.filename))
+    global img_name_behavior
+    path = "img/" + f.filename
+    img_name_behavior = path
+    f.save(path)
+    mlist = list(driverBehavior.openPicture(path))
     i = len(mlist)
     if i == 2:
         return render_template("driverBehavior.html", picture_url=mlist[1])
