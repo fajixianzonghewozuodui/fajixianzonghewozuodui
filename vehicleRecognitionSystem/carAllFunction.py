@@ -145,10 +145,8 @@ def number_define():
     if os.path.exists(img_name_number):
         os.remove(img_name_number)
     i = len(mlist)
-    if i ==3:
-        return render_template("plateNumberDefine.html",message = mlist[0],picture_url = mlist[1])
-    else:
-        return render_template("plateNumberDefine.html",message = mlist[0])
+    return render_template("plateNumberDefine.html",message = mlist[0]+mlist[2],picture_url = mlist[1])
+
 
 
 

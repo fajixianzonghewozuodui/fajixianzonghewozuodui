@@ -306,6 +306,7 @@ class CardPredictor:
 
     # 测试
     def predict(self):
+        str = '识别结束'
         if type(img_path) == type(""):
             img = imreadex(img_path)
         else:
@@ -448,20 +449,20 @@ class CardPredictor:
                 color = "yello"
                 limit1 = 11
                 limit2 = 34  # 有的图片有色偏偏绿
-                print('车牌为黄牌')
+                #print('车牌为黄牌')
             elif green * 2 >= card_img_count:
                 color = "green"
                 limit1 = 35
                 limit2 = 99
-                print('车牌为绿牌')
+               # print('车牌为绿牌')
             elif blue * 2 >= card_img_count:
                 color = "blue"
                 limit1 = 100
                 limit2 = 124  # 有的图片有色偏偏紫
-                print('车牌为蓝牌')
+                #print('车牌为蓝牌')
             elif black + white >= card_img_count * 0.7:  # TODO
                 color = "bw"
-                print('车牌为黑白色')  # 照片不是彩色图的情况
+               # print('车牌为黑白色')  # 照片不是彩色图的情况
             # print(color)
             colors.append(color)
             # print(blue, green, yello, black, white, card_img_count)
@@ -527,8 +528,7 @@ class CardPredictor:
                 wave_peaks = find_waves(x_threshold, x_histogram)
                 if len(wave_peaks) == 0:
                     str = "无图片或者图片中无车牌，请选择正确的图片"
-                    nu = "name"
-                    return str,nu
+                    continue
                 # 认为水平方向，最大的波峰为车牌区域
                 wave = max(wave_peaks, key=lambda x: x[1] - x[0])
                 gray_img = gray_img[wave[0]:wave[1]]
@@ -549,8 +549,7 @@ class CardPredictor:
                 # 车牌字符数应大于6
                 if len(wave_peaks) <= 6:
                     str = "图片中车牌字符数小于6，请选择正确的图片"
-                    nu = "name"
-                    return str,nu
+                    continue
 
                 wave = max(wave_peaks, key=lambda x: x[1] - x[0])
                 max_wave_dis = wave[1] - wave[0]
@@ -578,7 +577,7 @@ class CardPredictor:
                         wave_peaks.pop(2)
 
                 if len(wave_peaks) <= 6:
-                    print("字符数少于6，字符数为：", len(wave_peaks))
+                    str = "无图片或者图片中无车牌，请选择正确的图片"
                     continue
                 part_cards = seperate_card(gray_img, wave_peaks)
                 for i, part_card in enumerate(part_cards):
@@ -609,9 +608,9 @@ class CardPredictor:
                 card_color = color
                 break
 
-        nu = "name"
+
         r = ''.join(predict_result)
-        return r, img_url, nu  # 识别到的字符、定位的车牌图像、车牌颜色
+        return r, img_url, str  # 识别到的字符、定位的车牌图像、车牌颜色
 
 
 def get_img_stream(img_local_path):
