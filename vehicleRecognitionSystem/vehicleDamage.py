@@ -71,38 +71,33 @@ def define():
         if response:
             json_temp = response.json()
             print(json_temp)
-
-            numeric_info = jsonpath.jsonpath(json_temp, '$..numeric_info')[0]
-            result = jsonpath.jsonpath(json_temp, '$..result')[0]
             f=""
-            c=len(result)
-            j=0
             data = ""
-            while (j< c):
-                # 车损位置
-                parts = jsonpath.jsonpath(json_temp, '$..parts')[0]
-                print("车损位置", parts)
-                # 车损类型
-                type = jsonpath.jsonpath(json_temp, '$..type')[0]
-                print("车损类型", type)
-                # 置信度
-                probability = jsonpath.jsonpath(json_temp, '$..probability')[0]
-                print("置信度", probability)
-
-                j=j+1
-                i = 0
-                carmessage = "车损位置：" + str(parts) + \
+            # 车损位置
+            parts = jsonpath.jsonpath(json_temp, '$..parts')
+            print("车损位置", parts)
+            # 车损类型
+            type = jsonpath.jsonpath(json_temp, '$..type')
+            print("车损类型", type)
+             # 置信度
+            probability = jsonpath.jsonpath(json_temp, '$..probability')
+            print("置信度", probability)
+            carmessage = "车损位置：" + str(parts) + \
                             "\n车损类型：" + str(type) + \
                             "\n置信度：" + str(probability)
-                count = len(numeric_info)
-                vehicle_info = [['a', 'a', 'a', 'a', 'a', 'a'] for k in range(count)]
-                while (i < count):
+            numeric_info = jsonpath.jsonpath(json_temp, '$..numeric_info')
+            if numeric_info==False:
+                    return "识别失败",img_url
+            count = len(numeric_info)
+            vehicle_info = [['a', 'a', 'a', 'a', 'a', 'a'] for k in range(count)]
+            i=0
+            while (i < count):
                     vehicle_info[i][0] = jsonpath.jsonpath(json_temp, '$..width')[i]
                     vehicle_info[i][1] = jsonpath.jsonpath(json_temp, '$..area')[i]
                     vehicle_info[i][2] = jsonpath.jsonpath(json_temp, '$..ratio')[i]
                     vehicle_info[i][3] = jsonpath.jsonpath(json_temp, '$..height')[i]
                     i = i + 1
-                for vehicle in vehicle_info:
+            for vehicle in vehicle_info:
                       #print("宽度", vehicle[i][0])
                       #print("面积", vehicle[i][1])
                       #print("角度", vehicle[i][2])
@@ -112,7 +107,7 @@ def define():
                         "\n角度:" + str(vehicle[2]) + \
                         "\n高度:" + str(vehicle[3]) + '\n' + data + '\n' + '\n'
 
-                f=f+'\n'+carmessage+'\n'+data
+            f=f+'\n'+carmessage+'\n'+data
             return f,img_url
     else:
         str1 = "无图片，请选择一张图片进行识别"
