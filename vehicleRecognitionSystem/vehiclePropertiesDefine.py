@@ -45,6 +45,7 @@ app = Flask(__name__)
 # 打开图片文件并读取二进制图片信息
 #实现车辆检测
 def define():
+    global img_url,img_path
     if len(img_path)>1:
         f= get_file_content(img_path)
         host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=fUY1iqjYDWveFndRf02PmN3I&client_secret=peydzhociLSdIMG3dM2v0eHSNCymazLy'
@@ -75,6 +76,7 @@ def define():
 
 
             f=json_temp
+            img_path = "i"
             return f,img_url
     else:
         str1 = "无图片，请选择一张图片进行识别"

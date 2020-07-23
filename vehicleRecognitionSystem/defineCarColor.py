@@ -135,7 +135,6 @@ def get_dominant_color(image):
     result = result.convert('RGB')
     # result.show() # 显示图像
     main_colors = result.getcolors(80 * 80)
-    print(main_colors[0][1])
     return main_colors[0][1]
 
 if __name__ == '__main__':
