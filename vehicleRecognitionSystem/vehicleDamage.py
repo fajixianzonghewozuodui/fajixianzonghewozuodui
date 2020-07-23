@@ -45,6 +45,7 @@ app = Flask(__name__)
 # 打开图片文件并读取二进制图片信息
 #实现车辆检测
 def define():
+    global img_url,img_path
     if len(img_path)>1:
         f= get_file_content(img_path)
         host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=9KS0meTEo6pmtZ6tcxw1CdMN&client_secret=6nAE23Avqe5i1EvpAgo2BhGTifVlYNA9'
@@ -113,6 +114,7 @@ def define():
                         "\n高度:" + str(vehicle[3]) + '\n' + data + '\n' + '\n'
 
             f=f+'\n'+carmessage+'\n'+data
+            img_path = "i"
             return f,img_url
     else:
         str1 = "无图片，请选择一张图片进行识别"
