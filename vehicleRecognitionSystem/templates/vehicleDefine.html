@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>
-	车辆检测
+	车型识别
 </title>
 <meta name="ahyy" content="车辆识别">
 <meta keywords="车辆识别，车牌号识别">
@@ -65,7 +65,7 @@ background: #009FD9;
  		clear: both;
  }
 .wbk{
-    width:500px;
+    width:400px;
     height: 500px;
 
 }
@@ -123,7 +123,7 @@ this.className="";
 
            <div class="lt" >
 
-           	<table><tr><td colspan="2" width="600px"><img src="data:;base64,{{ picture_url }}" width="500px" height="500px"> <!-- 在img里显示图片 -->
+           	<table><tr><td colspan="2" width="700px"><img src="data:;base64,{{ picture_url }}" width="700px" height="500px"> <!-- 在img里显示图片 -->
             </td></tr>
                 <tr><td width="300px">
                     <form action="selectPicture" method="get">
@@ -137,7 +137,7 @@ this.className="";
            </div>
            <div class="rt">
                <div class="wbk">
-                   <div class="wbk"><font size="4px">识别结果为：</font><br> <textarea rows="30" cols="60">型号为：{{ message }}        颜色为：{{ color }}
+                   <font size="4px">识别结果为：</font><br> <textarea rows="30" cols="60">{{ message }}       {{ color }}
         </textarea>
                    </div>
 
