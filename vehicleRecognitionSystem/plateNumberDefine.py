@@ -610,7 +610,8 @@ class CardPredictor:
                 break
 
         nu = "name"
-        return predict_result,img_url,nu  # 识别到的字符、定位的车牌图像、车牌颜色
+        r = ''.join(predict_result)
+        return r, img_url, nu  # 识别到的字符、定位的车牌图像、车牌颜色
 
 
 def get_img_stream(img_local_path):
@@ -641,7 +642,7 @@ def open_picture(filename):
 if __name__ == '__main__':
     c = CardPredictor()
     c.train_svm()
-    r, roi, color = c.predict("test/car1.png")  # 带检测图片（在test中选择图片，也可以自己添加图片)
+    r, roi, color = c.predict("")  # 带检测图片（在test中选择图片，也可以自己添加图片)
     r = ''.join(r)
     # 显示识别结果
     print(r)
