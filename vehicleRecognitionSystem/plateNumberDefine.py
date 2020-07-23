@@ -635,7 +635,7 @@ def open_picture(filename):
         img_path = filename
         return filename, img_url
     else:
-        return filename
+        return "无"
 
 
 if __name__ == '__main__':
