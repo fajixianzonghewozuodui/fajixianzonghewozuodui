@@ -5,6 +5,7 @@ import vehicleDamage
 import vehicleDefine
 from flask import Flask, render_template,request, jsonify
 
+import vehiclePropertiesDefine
 
 app = Flask(__name__)
 
@@ -54,7 +55,7 @@ img_name_detect = "i"
 img_name_number = "i"
 img_name_damage = "i"
 img_name_behavior = "i"
-
+img_name_Att = "i"
 #实现了车型识别
 @app.route("/selectPicture",methods=["POST"])
 def define_open_picture():
@@ -146,11 +147,36 @@ def number_define():
         os.remove(img_name_number)
 
 
-
-
-
-
 #实现了车辆属性识别
+@app.route("/selectPictureAtt",methods=["POST"])
+def Att_open_picture():
+    # 通过file标签获取文件
+    f = request.files["filename"]
+    global img_name_damage
+    img_name_damage = f.filename
+    f.save(f.filename)
+    mlist = list(vehiclePropertiesDefine.openPicture(f.filename))
+    i = len(mlist)
+    if i == 2:
+        return render_template("vehiclePropertiesDefine.html", picture_url=mlist[1])
+    else:
+        return render_template("vehiclePropertiesDefine.html")
+
+@app.route("/defineCarAtt")
+def Att_car():
+    mlist = list(vehiclePropertiesDefine.define())
+    i = len(mlist)
+    if i==2:
+        return render_template("vehiclePropertiesDefine.html",message = mlist[0],picture_url=mlist[1])
+    else:
+        return render_template("vehiclePropertiesDefine.html",message = mlist[0])
+    global img_name_Att
+    if os.path.exists(img_name_Att):
+        os.remove(img_name_Att)
+
+
+
+
 
 #实现了车损识别
 @app.route("/selectPictureDamage",methods=["POST"])
