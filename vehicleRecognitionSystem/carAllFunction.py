@@ -87,7 +87,7 @@ def define_car():
 
 
 #实现了车辆检测
-@app.route("/selectPictureDetect")
+@app.route("/selectPictureDetect",methods=["POST"])
 def detect_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
@@ -114,7 +114,7 @@ def detect_car():
         os.remove(img_name_detect)
 
 #实现了车牌识别
-@app.route("/selectPictureNumber")
+@app.route("/selectPictureNumber",methods=["POST"])
 def number_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
@@ -150,7 +150,7 @@ def number_define():
 #实现了车辆属性识别
 
 #实现了车损识别
-@app.route("/selectPictureDamage")
+@app.route("/selectPictureDamage",methods=["POST"])
 def damage_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
@@ -177,7 +177,7 @@ def damage_car():
         os.remove(img_name_damage)
 
 #实现了驾驶行为检测
-@app.route("/selectPictureBehavior")
+@app.route("/selectPictureBehavior",methods=["POST"])
 def behavior_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
