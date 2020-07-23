@@ -626,20 +626,7 @@ def get_img_stream(img_local_path):
     return img_stream
 
     # 提示用户在本地选择一张汽车图片
-def open_picture():
-    application_window = tk.Tk()
-    application_window.withdraw()  # 将创建的tk窗口隐藏
-
-    # 设置文件对话框会显示的文件类型txt files (*.txt)|*.txt|All files (*.*)|*.*
-    my_filetypes = [('all files', '.*'), ('text files', '.txt')]
-
-    # 打开一个文件选择对话框，选择汽车图片,返回选择的文件路径
-    filename = filedialog.askopenfilename(parent=application_window,
-                                              initialdir=os.getcwd(),
-                                              title="请选择一张汽车图片",
-                                              filetypes=my_filetypes)
-    # 用户选择文件后销毁tk窗口
-    application_window.destroy()
+def open_picture(filename):
     if len(filename) > 0:
     # 获得用户选择的图片存储在服务器上的地址
         global img_url

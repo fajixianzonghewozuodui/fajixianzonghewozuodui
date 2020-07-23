@@ -122,7 +122,7 @@ this.className="";
            		<tr><td width="450px"><span color="#93858E" size="3px">{{ message }}</span></td></tr>
                 <tr><td width="450px"><span color="#93858E" size="3px">{{ color }}</span></td></tr>
                 <tr><td><br><form action="selectPicture" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="fileName" accept="image/*"/>
+                    <input type="file" name="filename" accept="image/*">
                 <input type="submit" value="预览">
                 </form></td></tr>
                 <tr><td><br><form action="defineCar" method="get">
@@ -133,14 +133,8 @@ this.className="";
            	<table><tr><td colspan="2" width="600px"><img src="data:;base64,{{ picture_url }}" width="500px" height="500px"> <!-- 在img里显示图片 -->
             </td></tr>
                 <tr><td width="300px">
-                    <form action="selectPicture" method="get">
-                        <input type="submit" value="选择图片"></form></td>
-                    <td width="300px">
-                    <form action="defineCar" method="get">
-                        <input type="submit" value="识别图片"></form></td>
                 </tr>
            		           	</table>
->>>>>>> 009be5ff683a2cc76985a520f2c4c31cbab81c7c
            </div>
            <div class="rt">
            	<<textarea width="500px" height="500px">型号为：{{ message }}</textarea>

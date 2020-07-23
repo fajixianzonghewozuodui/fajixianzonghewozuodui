@@ -162,18 +162,7 @@ def define():
 """
 
 #打开图片
-def openPicture():
-    application_window = tk.Tk()
-    application_window.withdraw()  # 将创建的tk窗口隐藏
-
-    # 设置文件对话框会显示的文件类型txt files (*.txt)|*.txt|All files (*.*)|*.*
-    my_filetypes = [('all files', '.*'), ('text files', '.txt')]
-
-    # 打开一个文件选择对话框，选择汽车图片
-    filename = filedialog.askopenfilename(parent=application_window,
-                                        initialdir=os.getcwd(),
-                                        title="请选择一张汽车图片",
-                                        filetypes=my_filetypes)
+def openPicture(filename):
     if len(filename)>0:
         #获得用户选择的图片存储在服务器上的地址
         global img_url
