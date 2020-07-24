@@ -56,7 +56,7 @@ def crop_img(path):
     # cv2.findContours()函数返回第一个值是list，list中每个元素都是图像中的一个轮廓，用numpy中的ndarray表示。
     # 每一个ndarray里保存的是轮廓上的各个点的坐标。我们把list排序，点最多的那个轮廓就是我们要找的昆虫的轮廓。
     x = cv2.findContours(closed.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    cnts, _b = x
+    a_,cnts, _b = x
     c = sorted(cnts, key=cv2.contourArea, reverse=True)[0]
     # OpenCV中通过cv2.drawContours在图像上绘制轮廓。
     # 第一个参数是指明在哪幅图像上绘制轮廓
@@ -107,7 +107,7 @@ def crop_img(path):
 def get_color_name(r, g, b):
     index = ["color", "color_name", "hex", "R", "G", "B"]
     # 将已经写好的颜色字典导入用于通过rgb值获取相应的颜色
-    csv_df = pd.read_csv('colors.csv', names=index, header=None, encoding="utf-8")
+    csv_df = pd.read_csv('C:/vehicleRecognitionSystem/colors.csv', names=index, header=None, encoding="utf-8")
     min_diff = 10000
     color_name = ''
     for i in range(len(csv_df)):
