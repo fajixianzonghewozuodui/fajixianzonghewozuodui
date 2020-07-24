@@ -80,7 +80,8 @@ def define():
             person_num = jsonpath.jsonpath(json_temp, '$..person_num')[0]
             # 车载人数
             driver_num = jsonpath.jsonpath(json_temp, '$..driver_num')[0]
-
+            if person_num==0:
+                return "图片模糊或无法识别 请重新选择图片",img_url
             j = 0
             data = ""
             attributes = ""

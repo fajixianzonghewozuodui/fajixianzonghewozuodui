@@ -94,6 +94,8 @@ def define():
            # 车辆总数
            vehicle_num = motorbike_num + tricycle_num + car_num + truck_num + bus_num
            print("车辆总数", vehicle_num)
+           if vehicle_num==0:
+               return "图片中无车辆或识别失败 请重新选择图片",img_url
            # 车辆位置
            vehicle_location = [['a', 'a', 'a', 'a', 'a', 'a'] for k in range(vehicle_num + carplate_num)]
            i = 0
