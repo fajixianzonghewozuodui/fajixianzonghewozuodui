@@ -48,7 +48,7 @@ def define():
     global img_url,img_path
     if len(img_path)>1:
         f= get_file_content(img_path)
-        host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=fUY1iqjYDWveFndRf02PmN3I&client_secret=peydzhociLSdIMG3dM2v0eHSNCymazLy'
+        host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=whRKPIK0qDP5RMtSv1sYhMFo&client_secret=1EuKG9xr5xh7ouB4cZvTLZMVfrAZ4Ggn'
         response = requests.get(host)
         request = urllib.request.Request(host)
         request.add_header('Content-Type', 'application/json; charset=UTF-8')

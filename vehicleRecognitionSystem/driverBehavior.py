@@ -87,6 +87,10 @@ def define():
             attributes = ""
             f=""
             m="\n驾驶人员数量:" + str(driver_num)
+            person_info=jsonpath.jsonpath(json_temp, '$..driver_num')
+            if person_info[0]==0:
+                str2="人员总数："+str(person_num)+'\n'+"人员信息:图片模糊,无法正确识别人员具体信息"
+                return str2,img_url
             location_info = [['a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
             attribute_info = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'] for k in range(person_num)]
             while (j < person_num):
