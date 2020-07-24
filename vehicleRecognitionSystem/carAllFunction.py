@@ -64,7 +64,7 @@ def define_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_define
-    path = "img/" + f.filename
+    path = "C:/vehicleRecognitionSystem/img/" + f.filename
     img_name_define = path
     f.save(path)
     mlist = list(vehicleDefine.open_picture(path))
@@ -97,7 +97,7 @@ def detect_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_detect
-    path = "img/" + f.filename
+    path = "C:/vehicleRecognitionSystem/img/" + f.filename
     img_name_detect = path
     f.save(path)
     mlist = list(vehicleDetect.openPicture(path))
@@ -127,7 +127,7 @@ def number_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_number
-    path = "img/" + f.filename
+    path = "C:/vehicleRecognitionSystem/img/" + f.filename
     img_name_number = path
     f.save(path)
     mlist = list(plateNumberDefine.open_picture(path))
@@ -157,7 +157,7 @@ def Att_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_Att
-    path = "img/" + f.filename
+    path = "C:/vehicleRecognitionSystem/img/" + f.filename
     img_name_Att = path
     f.save(path)
     mlist = list(vehiclePropertiesDefine.openPicture(path))
@@ -190,7 +190,7 @@ def damage_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_damage
-    path = "img/" + f.filename
+    path = "C:/vehicleRecognitionSystem/img/" + f.filename
     img_name_damage = path
     f.save(path)
     mlist = list(vehicleDamage.openPicture(path))
@@ -219,7 +219,7 @@ def behavior_open_picture():
     # 通过file标签获取文件
     f = request.files["filename"]
     global img_name_behavior
-    path = "img/" + f.filename
+    path = "C:/vehicleRecognitionSystem/img/" + f.filename
     img_name_behavior = path
     f.save(path)
     mlist = list(driverBehavior.openPicture(path))
