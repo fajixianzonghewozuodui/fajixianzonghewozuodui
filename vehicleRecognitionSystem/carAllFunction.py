@@ -85,7 +85,7 @@ def define_car():
     # img_name_define = "i"
     i = len(mlist)
     if i==3:
-        return render_template("vehicleDefine.html",message = mlist[0],color = mlist[1],picture_url = mlist[2])
+        return render_template("vehicleDefine.html",message = mlist[0],picture_url = mlist[2])
     else:
         return render_template("vehicleDefine.html",message = mlist[0])
 
