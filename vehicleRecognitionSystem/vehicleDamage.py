@@ -72,9 +72,9 @@ def define():
         if response:
             json_temp = response.json()
             print(json_temp)
-            numeric_info = jsonpath.jsonpath(json_temp, '$..numeric_info')
-            if numeric_info == False:
-                return "无车损或者图片无法正确识别", img_url
+            parts = jsonpath.jsonpath(json_temp, '$..parts')
+            if parts == 0:
+                return "无车损或者图片无法正确识别  请重新选择图片", img_url
             f=""
             data = ""
             carmessage=""
@@ -94,7 +94,9 @@ def define():
                             "\n车损类型：" + str(type[i]) + \
                             "\n置信度：" + str(probability[i])+'\n'+'\n'
                 i = i + 1
-
+            numeric_info=jsonpath.jsonpath(json_temp, '$..numeric_info')
+            if numeric_info==False:
+                return carmessage,img_url
             count = len(numeric_info)
             vehicle_info = [['a', 'a', 'a', 'a', 'a', 'a'] for k in range(count)]
             i=0

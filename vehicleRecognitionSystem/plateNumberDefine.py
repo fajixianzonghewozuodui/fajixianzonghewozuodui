@@ -604,6 +604,8 @@ class CardPredictor:
                         if part_card_old.shape[0] / part_card_old.shape[1] >= 7:  # 1太细，认为是边缘
                             continue
                     predict_result.append(charactor)
+                if len(predict_result)<=6:
+                    str= '识别错误'
                 roi = card_img
                 card_color = color
                 break
