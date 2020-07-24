@@ -77,8 +77,8 @@ def define():
         img_path = "i"
         return  car_message,car_color,img_url
     else:
-        str = "无图片，请选择一张图片进行识别"
-        return str,"error"
+        st = "无图片，请选择一张图片进行识别"
+        return st,"error"
 
 
 #提示用户在本地选择一张汽车图片
