@@ -105,8 +105,6 @@ def define():
                 direction_s = jsonpath.jsonpath(json_temp, '$..direction.score')[i]  # 车辆朝向分数
                 carm=carm+"车辆类型:\t\t"+str(vehicle_type)+"\n识别得分：\t"+str(vehicle_type_s)+'\n'+'\n'\
                 "是否有车窗雨眉:\t\t"+w+"\n识别得分：\t"+str(skylight)+'\n'+'\n'\
-                "是否有车窗雨眉:\t\t"+w+"\n识别得分：\t"+str(skylight)+'\n'+'\n'\
-                "是否有车顶架:\t\t" +r +"\n识别得分：\t" + str(roof_rack) + '\n'+'\n'\
                 "是否有车顶架:\t\t" +r +"\n识别得分：\t" + str(roof_rack) + '\n'+'\n'\
                 "是否有天窗:\t\t" +s +"\n识别得分：\t" + str(window_rain_eyebrow) + '\n'+'\n'\
                 "是否有车内摆放物:\t" + inf+"\n识别得分：\t" + str(in_car_item) + '\n'+'\n'\
