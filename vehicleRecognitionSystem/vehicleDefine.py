@@ -62,17 +62,10 @@ def define():
         # 调用client对象的carDectect方法
         car_name = client.carDetect(image, options={"top_num": 1})["result"][0]["name"]
         car_year = client.carDetect(image, options={"top_num": 1})["result"][0]["year"]
-        width = client.carDetect(image, options={"top_num": 1})["location_result"]["width"]
-        top = client.carDetect(image, options={"top_num": 1})["location_result"]["top"]
-        height = client.carDetect(image, options={"top_num": 1})["location_result"]["height"]
-        left = client.carDetect(image, options={"top_num": 1})["location_result"]["left"]
+
         car_message = "车型名称："+car_name+\
                       "\n年份："+car_year+\
-                      "\n汽车颜色："+car_color+\
-                      "\n车辆区域的宽度:"+str(width)+\
-                      "\n车辆区域的高度:"+str(height)+\
-                      "\n车辆区域离左边界的距离:"+str(left)+\
-                      "\n车辆区域离上边界的距离:"+str(top)
+                      "\n汽车颜色："+car_color
 
         img_path = "i"
         return  car_message,car_color,img_url
